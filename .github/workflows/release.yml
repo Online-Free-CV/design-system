@@ -15,7 +15,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: '21'
+          node-version: '14'
 
       - name: Install Semantic Release
         run: npm install semantic-release @semantic-release/git @semantic-release/changelog
@@ -25,7 +25,15 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Check if Release Already Exists
+        id: check_release
+        run: |
+          tag_name="v${{ steps.release.outputs.version }}"
+          response=$(curl -s -o /dev/null -w "%{http_code}" -X GET -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" "https://api.github.com/repos/${{ github.repository }}/releases/tags/$tag_name")
+          echo ::set-output name=release_exists::$(test $response -eq 200 && echo true || echo false)
+
       - name: Push Changelog to GitHub Release
+        if: steps.check_release.outputs.release_exists == 'false'
         uses: actions/create-release@v1
         with:
           tag_name: v${{ steps.release.outputs.version }}
