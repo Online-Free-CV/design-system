@@ -8,15 +8,28 @@ on:
 jobs:
   release:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Install dependencies
-        run: npm install
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '17'
 
-      - name: Run release-it
+      - name: Install Semantic Release
+        run: npm install semantic-release @semantic-release/git @semantic-release/changelog
+
+      - name: Create Changelog and Release
+        run: npx semantic-release
         env:
-          GITHUB_TOKEN: ${{ secrets.GH_PAT }}
-        run: npx release-it
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Push Changelog to GitHub Release
+        uses: actions/create-release@v1
+        with:
+          tag_name: v${{ steps.release.outputs.version }}
+          release_name: Release ${{ steps.release.outputs.version }}
+          body_path: CHANGELOG.md
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
