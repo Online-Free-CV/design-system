@@ -15,20 +15,13 @@ jobs:
       - name: Install auto-changelog
         run: npm install -g auto-changelog
       
-      - name: Generate new changelog
-        run: auto-changelog --commit-limit false --unreleased > tmp_changelog.md
-      
-      - name: Combine changelogs
-        run: |
-          cat tmp_changelog.md > new_changelog.md
-          cat CHANGELOG.md >> new_changelog.md
-          mv new_changelog.md CHANGELOG.md
-          rm tmp_changelog.md
+      - name: Generate changelog
+        run: auto-changelog --output HISTORY.md --template keepachangelog
       
       - name: Commit changelog
         run: |
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
-          git add CHANGELOG.md
+          git config --local user.email "liaqatsaeed007@gmail.com"
+          git config --local user.name "Liaqat Saeed"
+          git add HISTORY.md
           git commit -m "Update changelog"
           git push
