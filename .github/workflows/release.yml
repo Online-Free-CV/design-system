@@ -15,7 +15,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: '17'
+          node-version: '21'
 
       - name: Install Semantic Release
         run: npm install semantic-release @semantic-release/git @semantic-release/changelog
