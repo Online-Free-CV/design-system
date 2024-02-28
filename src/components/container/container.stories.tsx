@@ -1,11 +1,11 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
-import { Text } from "@components/text";
+import { Container } from "@components/container";
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
 const meta = {
-  title: "OnlineFreeCV/Text",
-  component: Text,
+  title: "OnlineFreeCV/Container",
+  component: Container,
   parameters: {
     // Optional parameter to center the component in the Canvas. More info: https://storybook.js.org/docs/configure/story-layout
     layout: "centered",
@@ -19,24 +19,18 @@ const meta = {
       control: "select",
       type: { name: "string", required: true },
       options: [
-        "display",
-        "h1",
-        "h2",
-        "h3",
-        "h4",
-        "h5",
-        "h6",
-        "body1",
-        "body2",
-        "body3",
+        "wrapper",
+        "flexWrap",
+        "row",
+        "column"
       ],
       table: {
         type: {
-          summary: "Has 10 variants: 7 for headings, 3 for body text",
+          summary: "Has 4 variants",
           detail:
-            "display | h1 | h2 | h3 | h4 | h5 | h6 | body1 | body2 | body3",
+            "wrapper | flexWrap | row | column",
         },
-        defaultValue: { summary: "body1" },
+        defaultValue: { summary: "wrapper" },
       },
     },
 
@@ -50,15 +44,15 @@ const meta = {
       },
     },
   },
-} satisfies Meta<typeof Text>;
+} satisfies Meta<typeof Container>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export let TextVariants: Story = {
+export let ContainerVariants: Story = {
   args: {
-    variant: 'h1',
-    children: "This is Heading 1"
+    variant: 'wrapper',
+    children: <><div>div 1</div><div>div 2</div></>
   },
 };
-TextVariants.name = "H1";
+ContainerVariants.name = "H1";
