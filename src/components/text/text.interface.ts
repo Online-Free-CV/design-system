@@ -1,7 +1,7 @@
 import { TextVariants } from "./text.type";
 
-export interface ITextProps {
+export interface TextProps {
   variant: TextVariants;
   className?: string;
-  children?: React.ReactNode;
+  children: React.ReactNode;
 }

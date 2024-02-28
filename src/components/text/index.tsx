@@ -1,7 +1,7 @@
 import { textRecipe } from "./text.css";
 import cx from "classnames";
 import { TextElements } from "./text.type";
-import { ITextProps } from "./text.interface";
+import { TextProps } from "./text.interface";
 import { StringMap } from "interfaces/global.interfaces";
 
 const tagsVariant: StringMap = {
@@ -21,7 +21,7 @@ export const Text = ({
   variant,
   children,
   className
-}: ITextProps) => {
+}: TextProps) => {
   let tag = tagsVariant[variant] as keyof Pick<
     JSX.IntrinsicElements,
     TextElements
