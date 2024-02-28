@@ -1,0 +1,1 @@
+import{j as a}from"./jsx-runtime-CKrituN3.js";const r=({url:e,children:n,...t})=>a.jsx("a",{href:e,target:"_blank",rel:"noopener noreferrer",...t,children:n});try{r.displayName="Link",r.__docgenInfo={description:"",displayName:"Link",props:{url:{defaultValue:null,description:"",name:"url",required:!0,type:{name:"string"}}}}}catch{}export{r as L};
