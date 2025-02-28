@@ -29,6 +29,8 @@ export const size: StringMap = {
   xl: "2rem",
   xxl: "3rem",
   full: "100%",
+  half: "50%",
+  auto: "auto",
 };
 
 // Font sizes for text elements
@@ -42,6 +44,7 @@ export const fontSize: StringMap = {
   xxl: `1.75rem`,
   xxxl: `2rem`,
   xxxxl: `2.5rem`,
+  
 };
 
 // Font weights for text elements
