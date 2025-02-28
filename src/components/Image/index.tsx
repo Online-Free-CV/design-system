@@ -1,32 +1,13 @@
-import cx from "classnames";
-import { ContainerProps } from "./container.interface";
-import { containerRecipe } from "./container.css";
+import React from "react";
+import { ImageProps } from "./image.interface.ts";
+import { imageStyle } from "./image.css.ts";
 
-export const Container = ({
-  variant,
-  direction,
-  justify,
-  align,
-  size,
-  gap,
-  children,
-  className
-}: ContainerProps) => {
+const Image: React.FC<ImageProps> = ({ alt, image }) => {
+  const Image = image || defaultImage;
   return (
-    <div
-      className={cx(
-        containerRecipe({
-          variant,
-          direction,
-          justify,
-          align,
-          size,
-          gap,
-        }),
-        className
-      )}
-    >
-      {children}
-    </div>
+
+<img alt={alt} loading="lazy" className={imageStyle} decoding="async" srcSet={image} src={image} />
   );
 };
+
+export default Image;

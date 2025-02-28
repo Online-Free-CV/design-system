@@ -3,7 +3,7 @@ import { ComponentMeta, ComponentStory } from "@storybook/react";
 import IconButton from "./index";
 
 export default {
-  title: "OnlineFreeCV/IconButton",
+  title: "DesignSystem/OnlineFreeCV/IconButton",
   component: IconButton,
 } as ComponentMeta<typeof IconButton>;
 
