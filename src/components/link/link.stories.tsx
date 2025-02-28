@@ -4,7 +4,7 @@ import { Meta, Story } from '@storybook/react';
 
 // Define the metadata for the story
 const meta: Meta = {
-  title: "OnlineFreeCV/Link",
+  title: "DesignSystem/OnlineFreeCV/Link",
   component: Link,
   parameters: {
     layout: "centered", // Center the component in the Canvas
