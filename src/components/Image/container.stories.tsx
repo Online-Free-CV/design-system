@@ -3,7 +3,7 @@ import { Container } from "@components/container";
 
 // Storybook Metadata
 const meta = {
-  title: "DesignSystem/OnlineFreeCV/Container",
+  title: "DesignSystem/OnlineFreeCV/Image",
   component: Container,
   parameters: {
   },

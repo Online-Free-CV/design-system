@@ -7,7 +7,7 @@ import { InputProps } from './input.interface';
 
 // Defining the metadata for the story
 const meta: Meta = {
-  title: "OnlineFreeCV/Input",
+  title: "DesignSystem/OnlineFreeCV/Input",
   component: Input,
   parameters: {
     layout: "centered", // Center the component in the Canvas
