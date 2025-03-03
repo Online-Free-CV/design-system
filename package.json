@@ -17,7 +17,8 @@
     "commit": "git add . && npx cz",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "prepublishOnly": "npm run build"
+    "prepublishOnly": "npm run build",
+    "release": "standard-version"
   },
   "dependencies": {
     "@vanilla-extract/css": "^1.14.1",
