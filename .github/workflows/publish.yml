@@ -1,3 +1,4 @@
+# filepath: /Users/mac/Desktop/Product/design-system/.github/workflows/publish.yml
 name: Publish Package
 
 on:
@@ -29,6 +30,6 @@ jobs:
         run: pnpm run build
 
       - name: Publish package
-        run: pnpm publish --access public
+        run: pnpm publish --access public --no-git-checks
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
