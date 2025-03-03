@@ -22,7 +22,7 @@ export const Text = ({
   children,
   className
 }: TextProps) => {
-  let tag = tagsVariant[variant] as keyof Pick<
+  const tag = tagsVariant[variant] as keyof Pick<
     JSX.IntrinsicElements,
     TextElements
   >;

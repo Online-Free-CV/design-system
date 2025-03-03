@@ -1,4 +1,3 @@
-import { Home } from "@assets/icons/Navbar";
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 import Image from "./index";
 

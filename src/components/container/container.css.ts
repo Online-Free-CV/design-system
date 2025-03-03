@@ -48,7 +48,7 @@ export const containerRecipe = recipe({
     },
     gap: {
       none: { gap: tokens.size.none },
-      small: { gap: tokens },
+      small: { gap: tokens.size.sm },
       medium: { gap: tokens.size.md },
       large: { gap: tokens.size.lg },
     },

@@ -114,7 +114,6 @@ export const RowLayout: Story = {
     ),
   },
 };
-RowLayout.storyName = "Row Layout";
 
 // Story for Column Layout
 export const ColumnLayout: Story = {
@@ -152,4 +151,3 @@ export const JustifyVariants: Story = {
     ),
   },
 };
-JustifyVariants.storyName = "Justify Variants";
