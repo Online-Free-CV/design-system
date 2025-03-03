@@ -55,7 +55,7 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export let TextVariants: Story = {
+export const TextVariants: Story = {
   args: {
     variant: 'h1',
     children: "This is Heading 1"

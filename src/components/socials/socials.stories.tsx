@@ -14,7 +14,7 @@ const meta: Meta = {
 export default meta;
 
 type Story = StoryObj<typeof meta>;
-export let TextVariants: Story = {
+export const TextVariants: Story = {
   args: {
     socialProfiles: [
       { name: "linkedin", url: "https://www.linkedin.com/" },

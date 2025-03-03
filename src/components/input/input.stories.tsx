@@ -1,7 +1,6 @@
 // Input.stories.tsx
-import React from 'react';
+import { Input } from "@components/input";
 import { Meta, StoryObj } from '@storybook/react';
-import {Input} from "@components/input"
 import { JSX } from 'react/jsx-runtime';
 import { InputProps } from './input.interface';
 

@@ -1,3 +1,4 @@
+import { ButtonProps } from "./button.interface";
 
 /**
  * Primary UI component for user interaction
