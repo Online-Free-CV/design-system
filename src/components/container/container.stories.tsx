@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { Container } from "@components/container";
-
+import { Text } from "@components/text";
 // Storybook Metadata
 const meta = {
   title: "DesignSystem/OnlineFreeCV/Container",
@@ -89,8 +89,10 @@ export const Default: Story = {
     gap: "none",
     children: (
       <>
-        <div style={{ padding: "10px", background: "#e0e0e0", flex:1 }}>Item 1</div>
-        <div style={{ padding: "10px", background: "#bdbdbd", flex:2 }}>Item 2</div>
+        <div style={{ padding: "10px", background: "#e0e0e0", flex:1 }}><Text variant="display">Item 1
+</Text></div>
+        <div style={{ padding: "10px", background: "#bdbdbd", flex:2 }}><Text variant="display">Item 2
+        </Text></div>
       </>
     ),
   },
@@ -108,8 +110,10 @@ export const RowLayout: Story = {
     gap: "none",
     children: (
       <>
-        <div style={{ padding: "10px", background: "#ff8a80" }}>My Name is Liaqat</div>
-        <div style={{ padding: "10px", background: "#ff5252" }}>I am a software Engineer</div>
+        <div style={{ padding: "10px", background: "#ff8a80" }}><Text variant="display">My Name is Liaqat
+        </Text></div>
+        <div style={{ padding: "10px", background: "#ff5252" }}><Text variant="display">I am a software Engineer
+        </Text></div>
       </>
     ),
   },
@@ -126,8 +130,10 @@ export const ColumnLayout: Story = {
     gap: "none",
     children: (
       <>
-        <div style={{ padding: "10px", background: "#80deea" }}>میرا نام لیاقت ہے۔</div>
-        <div style={{ padding: "10px", background: "#4dd0e1" }}>میں ایک سافٹ ویئر انجینئر ہوں۔</div>
+        <div style={{ padding: "10px", background: "#80deea" }}><Text variant="display">میرا نام لیاقت ہے۔
+        </Text></div>
+        <div style={{ padding: "10px", background: "#4dd0e1" }}><Text variant="display">میں ایک سافٹ ویئر انجینئر ہوں۔
+        </Text></div>
       </>
     ),
   },
@@ -145,8 +151,10 @@ export const JustifyVariants: Story = {
     gap: "none",
     children: (
       <>
-        <div style={{ padding: "10px", background: "#b2ff59", flex:1 }}>Start</div>
-        <div style={{ padding: "10px", background: "#76ff03",flex: 3 }}>End</div>
+        <div style={{ padding: "10px", background: "#b2ff59", flex:1 }}><Text variant="display">Start
+        </Text></div>
+        <div style={{ padding: "10px", background: "#76ff03",flex: 3 }}><Text variant="display">End
+        </Text></div>
       </>
     ),
   },

@@ -21,6 +21,7 @@
     "release": "standard-version"
   },
   "dependencies": {
+    "@fontsource/pacifico": "^5.2.5",
     "@vanilla-extract/css": "^1.14.1",
     "@vanilla-extract/vite-plugin": "^4.0.4",
     "classnames": "^2.5.1",
