@@ -1,4 +1,4 @@
-export interface ImageProps {
+export interface CustomImageProps {
   alt: string;
   image: string;
 }
