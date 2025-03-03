@@ -29,7 +29,12 @@ jobs:
       - name: Build package
         run: pnpm run build
 
+      - name: Bump version and generate changelog
+        run: pnpm run release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+
       - name: Publish package
-        run: pnpm publish --access public --no-git-checks
+        run: pnpm publish --access restricted --no-git-checks
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
