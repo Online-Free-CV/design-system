@@ -1,13 +1,13 @@
+import { Image } from "@components/Image";
 import { ComponentMeta, ComponentStory } from "@storybook/react";
-import CustomImage from "./index";
 
 export default {
   title: "DesignSystem/OnlineFreeCV/Image",
-  component: CustomImage,
-} as ComponentMeta<typeof CustomImage>;
+  component: Image,
+} as ComponentMeta<typeof Image>;
 
-const Template: ComponentStory<typeof CustomImage> = (args) => (
-  <CustomImage {...args} />
+const Template: ComponentStory<typeof Image> = (args) => (
+  <Image {...args} />
 );
 
 export const Default = Template.bind({});
