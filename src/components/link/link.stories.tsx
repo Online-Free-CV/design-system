@@ -1,31 +1,44 @@
-// Link.stories.tsx
-import { Link } from '@components/link';
-import { Meta, Story } from '@storybook/react';
+import type { Meta, StoryObj } from "@storybook/react";
+import { Link } from "@components/link";
 
-// Define the metadata for the story
-const meta: Meta = {
+// Storybook Metadata
+const meta = {
   title: "DesignSystem/OnlineFreeCV/Link",
   component: Link,
   parameters: {
     layout: "centered", // Center the component in the Canvas
   },
+  tags: ["autodocs"],
   argTypes: {
     url: {
-      name: "url",
-    }
-  }
-};
+      name: "URL",
+      control: "text",
+      description: "URL for the link",
+      table: {
+        type: { summary: "string" },
+        defaultValue: { summary: "https://www.example.com/" },
+      },
+    },
+    children: {
+      name: "Children",
+      control: "text",
+      description: "Content of the link",
+      table: {
+        type: { summary: "ReactNode" },
+        defaultValue: { summary: "Click me" },
+      },
+    },
+  },
+} satisfies Meta<typeof Link>;
 
 export default meta;
+type Story = StoryObj<typeof meta>;
 
-// Defining the Story object
-type StoryType = Story<{ url: string }>;
-
-// Template for Link component story
-const Template: StoryType = (args) => <Link {...args}>Click me</Link>;
-
-// Default story for Link component
-export const Default = Template.bind({});
-Default.args = {
-  url: "https://www.example.com/"
+// Story for Default Link
+export const Default: Story = {
+  args: {
+    url: "https://www.example.com/",
+    children: "Click me",
+  },
 };
+Default.storyName = "Default Link";
