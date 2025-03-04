@@ -30,7 +30,7 @@ export const SocialItem: React.FC<SocialItemProps> = ({ name, url }) => {
   );
 };
 
-export const Socials: React.FC<SocialsProps> = ({ socialProfiles }) => (
+export const Socials = ({ socialProfiles }: SocialsProps) => (
   <div className={socialsStyle}>
     {socialProfiles.map(({ name, url }, index) => (
       <SocialItem key={index} url={url} name={name} />

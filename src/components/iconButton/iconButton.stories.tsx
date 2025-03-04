@@ -1,19 +1,49 @@
+import type { Meta, StoryObj } from "@storybook/react";
 import { Home } from "@assets/icons/Navbar";
-import { ComponentMeta, ComponentStory } from "@storybook/react";
-import IconButton from "./index";
+import { IconButton } from "./index";
 
-export default {
+// Storybook Metadata
+const meta = {
   title: "DesignSystem/OnlineFreeCV/IconButton",
   component: IconButton,
-} as ComponentMeta<typeof IconButton>;
+  parameters: {},
+  tags: ["autodocs"],
+  argTypes: {
+    label: {
+      name: "Label",
+      control: "text",
+      description: "Label for the button",
+      table: {
+        type: { summary: "string" },
+        defaultValue: { summary: "Home" },
+      },
+    },
+    onClick: {
+      action: "clicked",
+      description: "Click handler for the button",
+      table: {
+        type: { summary: "function" },
+      },
+    },
+    icon: {
+      control: false,
+      description: "Icon component for the button",
+      table: {
+        type: { summary: "ReactNode" },
+      },
+    },
+  },
+} satisfies Meta<typeof IconButton>;
 
-const Template: ComponentStory<typeof IconButton> = (args) => (
-  <IconButton {...args} />
-);
+export default meta;
+type Story = StoryObj<typeof meta>;
 
-export const Default = Template.bind({});
-Default.args = {
-  label: "Home",
-  onClick: () => alert("Home clicked"),
-  icon: <Home width={20} height={20} />,
+// Story for Default IconButton
+export const Default: Story = {
+  args: {
+    label: "Home",
+    onClick: () => alert("Home clicked"),
+    icon: <Home width={20} height={20} />,
+  },
 };
+Default.storyName = "Default IconButton";
