@@ -13,7 +13,7 @@ export default defineConfig({
   build: {
     outDir: "dist",
     lib: {
-      entry: path.resolve(__dirname, "src/index.ts"), // Entry point
+      entry: path.resolve(__dirname, "src/components.tsx"), // Entry point
       name: "OnlineFreecvDesignSystem",
       formats: ["es", "cjs"],
       fileName: (format) => `index.${format}.js`,
