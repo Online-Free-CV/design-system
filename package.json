@@ -16,11 +16,19 @@
       "require": "./dist/components/index.cjs.js",
       "types": "./dist/components.d.ts"
     },
+    "./style.css": {
+      "import": "./dist/style.css",
+      "require": "./dist/style.css",
+      "types": "./dist/style.css"
+    },
     "./release.config.js": {
       "type": "commonjs"
     }
   },
-  "files": ["dist"],
+  "files": [
+    "dist",
+    "dist/styles.css"
+  ],
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
