@@ -83,6 +83,19 @@ declare const meta: {
                 };
             };
         };
+        reverse: {
+            control: string;
+            options: string[];
+            description: string;
+            table: {
+                type: {
+                    summary: string;
+                };
+                defaultValue: {
+                    summary: string;
+                };
+            };
+        };
         className: {
             name: string;
             control: string;

@@ -83,4 +83,12 @@ export declare const containerRecipe: import('@vanilla-extract/recipes').Runtime
             gap: `var(--${string})` | `var(--${string}, ${string})` | `var(--${string}, ${number})`;
         };
     };
+    reverse: {
+        row: {
+            flexDirection: "row-reverse";
+        };
+        column: {
+            flexDirection: "column-reverse";
+        };
+    };
 }>;
