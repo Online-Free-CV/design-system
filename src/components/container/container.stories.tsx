@@ -1,12 +1,11 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { Container } from "@components/container";
-import { Text } from "@components/text";
+
 // Storybook Metadata
 const meta = {
   title: "DesignSystem/OnlineFreeCV/Container",
   component: Container,
-  parameters: {
-  },
+  parameters: {},
   tags: ["autodocs"],
   argTypes: {
     variant: {
@@ -63,6 +62,15 @@ const meta = {
         defaultValue: { summary: "none" },
       },
     },
+    reverse: {
+      control: "select",
+      options: ["row", "column"],
+      description: "Reverses the order of children",
+      table: {
+        type: { summary: "row | column" },
+        defaultValue: { summary: "row" },
+      },
+    },
     className: {
       name: "ClassName",
       control: "text",
@@ -87,12 +95,11 @@ export const Default: Story = {
     align: "stretch",
     size: "auto",
     gap: "none",
+    reverse: "row",
     children: (
       <>
-        <div style={{ padding: "10px", background: "#e0e0e0", flex:1 }}><Text variant="display">Item 1
-</Text></div>
-        <div style={{ padding: "10px", background: "#bdbdbd", flex:2 }}><Text variant="display">Item 2
-        </Text></div>
+        <div style={{ padding: "10px", background: "#e0e0e0", flex:1 }}>Item 1</div>
+        <div style={{ padding: "10px", background: "#bdbdbd", flex:2 }}>Item 2</div>
       </>
     ),
   },
@@ -108,12 +115,11 @@ export const RowLayout: Story = {
     align: "center",
     size: "auto",
     gap: "none",
+    reverse: "row",
     children: (
       <>
-        <div style={{ padding: "10px", background: "#ff8a80" }}><Text variant="display">My Name is Liaqat
-        </Text></div>
-        <div style={{ padding: "10px", background: "#ff5252" }}><Text variant="display">I am a software Engineer
-        </Text></div>
+        <div style={{ padding: "10px", background: "#ff8a80" }}>My Name is Liaqat</div>
+        <div style={{ padding: "10px", background: "#ff5252" }}>I am a software Engineer</div>
       </>
     ),
   },
@@ -128,12 +134,11 @@ export const ColumnLayout: Story = {
     align: "center",
     size: "auto",
     gap: "none",
+    reverse: "column",
     children: (
       <>
-        <div style={{ padding: "10px", background: "#80deea" }}><Text variant="display">میرا نام لیاقت ہے۔
-        </Text></div>
-        <div style={{ padding: "10px", background: "#4dd0e1" }}><Text variant="display">میں ایک سافٹ ویئر انجینئر ہوں۔
-        </Text></div>
+        <div style={{ padding: "10px", background: "#80deea" }}>میرا نام لیاقت ہے۔</div>
+        <div style={{ padding: "10px", background: "#4dd0e1" }}>میں ایک سافٹ ویئر انجینئر ہوں۔</div>
       </>
     ),
   },
@@ -149,12 +154,11 @@ export const JustifyVariants: Story = {
     align: "center",
     size: "auto",
     gap: "none",
+    reverse: "row",
     children: (
       <>
-        <div style={{ padding: "10px", background: "#b2ff59", flex:1 }}><Text variant="display">Start
-        </Text></div>
-        <div style={{ padding: "10px", background: "#76ff03",flex: 3 }}><Text variant="display">End
-        </Text></div>
+        <div style={{ padding: "10px", background: "#b2ff59", flex:1 }}>Start</div>
+        <div style={{ padding: "10px", background: "#76ff03",flex: 3 }}>End</div>
       </>
     ),
   },

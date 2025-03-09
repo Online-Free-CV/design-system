@@ -52,6 +52,10 @@ export const containerRecipe = recipe({
       medium: { gap: tokens.size.md },
       large: { gap: tokens.size.lg },
     },
+    reverse: {
+      row: { flexDirection: 'row-reverse' },
+      column: { flexDirection: 'column-reverse' },
+    },
   },
   defaultVariants: {
     variant: "wrapper",
@@ -60,5 +64,6 @@ export const containerRecipe = recipe({
     align: "stretch",
     size: "auto",
     gap: "none",
+    reverse: "row",
   }
 });
