@@ -1,4 +1,2 @@
-import { default as React } from 'react';
 import { SpinnerProps } from './spinner.interface';
-declare const Spinner: React.FC<SpinnerProps>;
-export default Spinner;
+export declare const Spinner: ({ size, color }: SpinnerProps) => import("react/jsx-runtime").JSX.Element;

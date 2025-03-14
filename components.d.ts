@@ -5,3 +5,4 @@ export { Button } from './components/button';
 export { IconButton } from './components/iconButton';
 export { Input } from './components/input';
 export { Socials } from './components/socials';
+export { Spinner } from './components/spinner';

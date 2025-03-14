@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from '@storybook/react';
-import { default as Spinner } from './index';
+import { Spinner } from './index';
 declare const meta: Meta<typeof Spinner>;
 export default meta;
 type Story = StoryObj<typeof Spinner>;
