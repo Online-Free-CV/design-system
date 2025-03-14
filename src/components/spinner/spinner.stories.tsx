@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from "@storybook/react";
-import Spinner from "./index";
+import { Spinner } from "./index";
 import { tokens } from "@styles/theme.css";
 
 const meta: Meta<typeof Spinner> = {

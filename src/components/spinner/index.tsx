@@ -1,9 +1,7 @@
-import React from "react";
+import { tokens } from "@styles/theme.css";
 import { spinner } from "./spinner.css";
 import { SpinnerProps } from "./spinner.interface";
-import { tokens } from "@styles/theme.css";
-
-const Spinner: React.FC<SpinnerProps> = ({ size = "medium", color }) => {
+export const Spinner = ({ size = "medium", color }: SpinnerProps) => {
   const sizeStyle = {
     small: { width: "20px", height: "20px", borderWidth: "4px" },
     medium: { width: "40px", height: "40px", borderWidth: "6px" },
@@ -20,5 +18,3 @@ const Spinner: React.FC<SpinnerProps> = ({ size = "medium", color }) => {
     ></div>
   );
 };
-
-export default Spinner;
