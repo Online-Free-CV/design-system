@@ -3,9 +3,9 @@ import { spinner } from "./spinner.css";
 import { SpinnerProps } from "./spinner.interface";
 export const Spinner = ({ size = "medium", color }: SpinnerProps) => {
   const sizeStyle = {
-    small: { width: "20px", height: "20px", borderWidth: "4px" },
-    medium: { width: "40px", height: "40px", borderWidth: "6px" },
-    large: { width: "60px", height: "60px", borderWidth: "8px" },
+    small: { width: "10px", height: "10px", borderWidth: "2px" },
+    medium: { width: "20px", height: "20px", borderWidth: "4px" },
+    large: { width: "30px", height: "30px", borderWidth: "6px" },
   }[size];
 
   return (
