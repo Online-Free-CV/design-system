@@ -45,8 +45,10 @@
     "@vanilla-extract/css": "^1.14.1",
     "@vanilla-extract/vite-plugin": "^4.0.4",
     "classnames": "^2.5.1",
+    "formik": "^2.4.6",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "yup": "^1.6.1"
   },
   "devDependencies": {
     "@storybook/addon-essentials": "^7.6.17",
