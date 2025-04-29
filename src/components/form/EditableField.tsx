@@ -1,6 +1,6 @@
 import cx from "classnames";
 import * as React from "react";
-import { useFormikContext } from "formik";
+import { useFormikContext, FormikValues } from "formik";
 import { editableFieldStyle } from "./editable-field.css";
 
 interface EditableFieldProps {
@@ -8,7 +8,7 @@ interface EditableFieldProps {
 }
 
 export const EditableField: React.FC<EditableFieldProps> = ({ name }) => {
-  const { values, setFieldValue, errors, touched } = useFormikContext<any>();
+  const { values, setFieldValue, errors } = useFormikContext<FormikValues>();
   const [isEditing, setIsEditing] = React.useState(false);
   const editableRef = React.useRef<HTMLDivElement>(null);
 
@@ -17,7 +17,7 @@ export const EditableField: React.FC<EditableFieldProps> = ({ name }) => {
     if (hasError) {
       setIsEditing(true);
     }
-  }, [values, errors]);
+  }, [values, errors, name]);
   React.useEffect(() => {
     if (isEditing && editableRef.current) {
       editableRef.current.focus();
