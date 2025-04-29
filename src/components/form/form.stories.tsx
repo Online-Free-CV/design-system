@@ -40,7 +40,7 @@ export const Default: Story = {
             firstName: "", // Replace with actual field names and values
         },
         onSubmit: (values, actions) => {
-            alert("Form submitted");
+            alert(`Form submitted: ${JSON.stringify(values)}`);
             actions.setSubmitting(false); // Example action
         },
         validationSchema: validationSchema,
