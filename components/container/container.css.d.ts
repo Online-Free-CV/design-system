@@ -1,8 +1,8 @@
 export declare const containerRecipe: import('@vanilla-extract/recipes').RuntimeFn<{
     variant: {
         wrapper: {
-            width: `var(--${string})` | `var(--${string}, ${string})` | `var(--${string}, ${number})`;
-            height: `var(--${string})` | `var(--${string}, ${string})` | `var(--${string}, ${number})`;
+            width: `var(--${string})` | `var(--${string}, ${string})`;
+            height: `var(--${string})` | `var(--${string}, ${string})`;
         };
         flexWrap: {
             flexWrap: "wrap";
@@ -57,30 +57,30 @@ export declare const containerRecipe: import('@vanilla-extract/recipes').Runtime
     };
     size: {
         full: {
-            width: `var(--${string})` | `var(--${string}, ${string})` | `var(--${string}, ${number})`;
-            height: `var(--${string})` | `var(--${string}, ${string})` | `var(--${string}, ${number})`;
+            width: `var(--${string})` | `var(--${string}, ${string})`;
+            height: `var(--${string})` | `var(--${string}, ${string})`;
         };
         half: {
-            width: `var(--${string})` | `var(--${string}, ${string})` | `var(--${string}, ${number})`;
-            height: `var(--${string})` | `var(--${string}, ${string})` | `var(--${string}, ${number})`;
+            width: `var(--${string})` | `var(--${string}, ${string})`;
+            height: `var(--${string})` | `var(--${string}, ${string})`;
         };
         auto: {
-            width: `var(--${string})` | `var(--${string}, ${string})` | `var(--${string}, ${number})`;
-            height: `var(--${string})` | `var(--${string}, ${string})` | `var(--${string}, ${number})`;
+            width: `var(--${string})` | `var(--${string}, ${string})`;
+            height: `var(--${string})` | `var(--${string}, ${string})`;
         };
     };
     gap: {
         none: {
-            gap: `var(--${string})` | `var(--${string}, ${string})` | `var(--${string}, ${number})`;
+            gap: `var(--${string})` | `var(--${string}, ${string})`;
         };
         small: {
-            gap: `var(--${string})` | `var(--${string}, ${string})` | `var(--${string}, ${number})`;
+            gap: `var(--${string})` | `var(--${string}, ${string})`;
         };
         medium: {
-            gap: `var(--${string})` | `var(--${string}, ${string})` | `var(--${string}, ${number})`;
+            gap: `var(--${string})` | `var(--${string}, ${string})`;
         };
         large: {
-            gap: `var(--${string})` | `var(--${string}, ${string})` | `var(--${string}, ${number})`;
+            gap: `var(--${string})` | `var(--${string}, ${string})`;
         };
     };
     reverse: {
