@@ -14,7 +14,7 @@ const baseStyle = style({
 });
 
 export const editableFieldStyle = styleVariants({
-  default: [baseStyle, { outline: "none" }],
+  default: [baseStyle, { outline: "none", whiteSpace: "pre-wrap", display: "inline-block" }],
   editing: [
     baseStyle,
     {
