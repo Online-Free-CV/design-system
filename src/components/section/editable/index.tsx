@@ -1,20 +1,19 @@
+import { getIn, useFormikContext } from "formik";
 import { useEffect, useMemo, useState } from "react";
-import { useFormikContext, getIn } from "formik";
-import { EditableItem, EditableSectionProps } from "./editable.interface";
-import {
-  sectionHeader,
-  addButton,
-  itemBox,
-  formGroup,
-  fieldLabel,
-  smallInput,
-  textarea,
-  input,
-  saveButton,
-} from "./editable.css";
 import { ExperienceSection } from "../experience";
 import { ExperienceItem } from "../experience/experience.interface";
 import { Section } from "../section";
+import {
+  addButton,
+  fieldLabel,
+  formGroup,
+  input,
+  itemBox,
+  saveButton,
+  smallInput,
+  textarea
+} from "./editable.css";
+import { EditableItem, EditableSectionProps } from "./editable.interface";
 
 function generateUniqueId() {
   return Date.now().toString() + Math.random().toString(36).substring(2);
@@ -28,8 +27,8 @@ export function EditableSection<T extends EditableItem>({
   onSave,
 }: EditableSectionProps<T> & { name: string }) {
   const { values, setFieldValue, validateForm, setTouched, errors } =
-    useFormikContext<any>();
-  const formikItems: T[] = values[name];
+    useFormikContext<Record<string, T[]>>();
+  const formikItems: T[] = values[name] || [];
 
   const [items, setItems] = useState<T[]>([]);
 
@@ -114,7 +113,7 @@ export function EditableSection<T extends EditableItem>({
         />
       )}
 
-      {editItems.map((item, index) => {
+      {editItems.map((item) => {
         const originalIndex = items.findIndex((i) => i.id === item.id);
         return (
           <div key={item.id} className={itemBox}>
@@ -174,7 +173,7 @@ export function EditableSection<T extends EditableItem>({
                     >
                       <div
                         className={
-                          !!getIn(
+                          getIn(
                             errors,
                             `${name}.[${originalIndex}].${key as string}`
                           )
@@ -200,7 +199,7 @@ export function EditableSection<T extends EditableItem>({
                       </div>
                       <div
                         className={
-                          !!getIn(
+                          getIn(
                             errors,
                             `${name}.[${originalIndex}].${key as string}`
                           )
@@ -237,7 +236,7 @@ export function EditableSection<T extends EditableItem>({
                   <div
                     key={String(key)}
                     className={
-                      !!getIn(
+                      getIn(
                         errors,
                         `${name}.[${originalIndex}].${key as string}`
                       )
@@ -283,7 +282,7 @@ export function EditableSection<T extends EditableItem>({
                   <div
                     key={String(key)}
                     className={
-                      !!getIn(errors, `${name}.[${originalIndex}].${key as string}`)
+                      getIn(errors, `${name}.[${originalIndex}].${key as string}`)
                         ? formGroup.error
                         : ""
                     }
@@ -334,7 +333,7 @@ export function EditableSection<T extends EditableItem>({
                 <div
                   key={String(key)}
                   className={
-                    !!getIn(
+                    getIn(
                       errors,
                       `${name}.[${originalIndex}].${key as string}`
                     )

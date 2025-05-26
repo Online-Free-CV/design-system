@@ -1,11 +1,8 @@
-import type { Meta, StoryObj } from "@storybook/react";
-import { Appform, EditableField, Yup } from "./index";
 import {
-  EditableSection,
-  EditableItem,
-  FieldConfig,
-  Section,
+    EditableSection
 } from "@components/section";
+import type { Meta, StoryObj } from "@storybook/react";
+import { Appform, Yup } from "./index";
 
 const experienceItemSchema = Yup.object().shape({
   title: Yup.string().required("Title is required"),
@@ -96,7 +93,7 @@ export const Default: Story = {
           startDate: new Date().toISOString().split("-").slice(0, 2).join("-"),
           endDate: "",
           description: "",
-          isPresent: false,
+          isPresent: true,
           isEdit: true,
           id: "1",
         },
@@ -108,7 +105,7 @@ export const Default: Story = {
           startDate:new Date().toISOString().split("-").slice(0, 2).join("-"),
           endDate: "",
           description: "",
-          isPresent: false,
+          isPresent: true,
           isEdit: true,
           id: "1",
         },
@@ -119,7 +116,7 @@ export const Default: Story = {
           description: "",
           startDate: new Date().toISOString().split("-").slice(0, 2).join("-"),
           endDate: "",
-          isPresent: false,
+          isPresent: true,
           isEdit: true,
           id: "1",
         },
