@@ -31,7 +31,6 @@ export const EditableField: React.FC<EditableFieldProps> = ({ name }) => {
   };
 
   return (
-    <>
       <span
         ref={editableRef}
         data-placeholder={`${name} Required`}
@@ -46,11 +45,5 @@ export const EditableField: React.FC<EditableFieldProps> = ({ name }) => {
       >
         {values[name]}
       </span>
-      {/* {hasError && (
-        <span style={{ color: "red", fontSize: "12px", marginTop: "4px" }}>
-          {errors[name] as string}
-        </span>
-      )} */}
-    </>
   );
 };

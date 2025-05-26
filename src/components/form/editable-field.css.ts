@@ -45,6 +45,7 @@ export const editableFieldStyle = styleVariants({
         "-webkit-text-fill-color": "red",
         fontFamily: "'__Raleway_88131f', '__Raleway_Fallback_88131f'",
         fontWeight: 500,
+        textTransform: "capitalize",
       },
     },
   ],

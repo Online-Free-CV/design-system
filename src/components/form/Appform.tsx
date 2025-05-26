@@ -1,7 +1,7 @@
 import { withFormik } from "@hoc/withFormik";
 
 interface MyFormValues {
-  firstName: string;
+  [key: string]: any;
 }
 
 const MyForm: React.FC<{ values: MyFormValues }> = () => (
