@@ -1,6 +1,6 @@
 export type IconTypes =
 | "facebook"
-| "linkedIn"
+| "linkedin"
 | "youtube"
 | "github"
 | "instagram"
