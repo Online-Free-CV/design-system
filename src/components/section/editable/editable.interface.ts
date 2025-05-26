@@ -1,21 +1,24 @@
-export type FieldType = 'text' | 'textarea' | 'date';
+export type FieldType = 'text' | 'textarea' | 'date'| "tags";
 
 export interface EditableItem {
   id?: string;
   subtitle?: string;
+  university?: string;
   company?: string;
+  location?: string;
   startDate?: string;
   endDate?: string;
   isPresent?: boolean;
   description?: string;
   logoUrl?: string;
+  tags?: string[];
   isEdit?: boolean
 }
 
 export interface FieldConfig<T> {
   key: keyof T;
   label: string;
-  type: 'text' | 'textarea' | 'date';
+  type: FieldType;
 }
 
 export interface EditableSectionProps<T extends EditableItem> {

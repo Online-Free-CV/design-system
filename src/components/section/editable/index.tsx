@@ -48,7 +48,7 @@ export function EditableSection<T extends EditableItem>({
   const handleChange = (
     index: number,
     key: keyof T,
-    value: string | boolean
+    value: string | boolean | string[]
   ) => {
     const updated = [...items];
     updated[index] = { ...updated[index], [key]: value };
@@ -258,6 +258,77 @@ export function EditableSection<T extends EditableItem>({
                   </div>
                 );
               }
+
+              if (type === "tags") {
+                const tags = (item[key] as string[]) || [];
+              
+                const handleAddTag = (e: React.KeyboardEvent<HTMLInputElement>) => {
+                  if (e.key === "Enter") {
+                    e.preventDefault();
+                    const newTag = e.currentTarget.value.trim();
+                    if (newTag && !tags.includes(newTag)) {
+                      const updatedTags = [...tags, newTag];
+                      handleChange(originalIndex, key, updatedTags);
+                      e.currentTarget.value = "";
+                    }
+                  }
+                };
+              
+                const handleRemoveTag = (tagToRemove: string) => {
+                  const updatedTags = tags.filter((t) => t !== tagToRemove);
+                  handleChange(originalIndex, key, updatedTags);
+                };
+              
+                return (
+                  <div
+                    key={String(key)}
+                    className={
+                      !!getIn(errors, `${name}.[${originalIndex}].${key as string}`)
+                        ? formGroup.error
+                        : ""
+                    }
+                    data-placeholder={"Required"}
+                  >
+                    <label className={fieldLabel}>{label}</label>
+                    <input
+                      type="text"
+                      onKeyDown={handleAddTag}
+                      placeholder="Type and press Enter"
+                      className={input}
+                    />
+                    <div style={{ marginTop: "0.5rem", display: "flex", flexWrap: "wrap", gap: "0.5rem" }}>
+                      {tags.map((tag, i) => (
+                        <span
+                          key={i}
+                          style={{
+                            background: "#eee",
+                            padding: "0.3rem 0.6rem",
+                            borderRadius: "20px",
+                            display: "flex",
+                            alignItems: "center",
+                            gap: "0.5rem",
+                          }}
+                        >
+                          {tag}
+                          <button
+                            type="button"
+                            onClick={() => handleRemoveTag(tag)}
+                            style={{
+                              background: "transparent",
+                              border: "none",
+                              cursor: "pointer",
+                              fontWeight: "bold",
+                              color: "#c00",
+                            }}
+                          >
+                            ×
+                          </button>
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                );
+              }              
 
               return (
                 <div

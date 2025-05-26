@@ -28,9 +28,8 @@ export const addButton = style({
 });
 
 export const itemBox = style({
-  border: "1px solid #e1e1e1",
-  padding: tokens.spacing.md,
-  borderRadius: tokens.spacing.sm,
+  borderBottom: "1px solid #e1e1e1",
+  paddingBottom: tokens.spacing.md,
   marginBottom: tokens.spacing.lg,
 });
 
