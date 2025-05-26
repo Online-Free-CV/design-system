@@ -1,97 +1,111 @@
-import { useState, useMemo } from 'react';
-import { EditableItem, EditableSectionProps } from './editable.interface';
+import { useEffect, useMemo, useState } from "react";
+import { useFormikContext, getIn } from "formik";
+import { EditableItem, EditableSectionProps } from "./editable.interface";
 import {
-  section,
   sectionHeader,
-  sectionTitle,
   addButton,
   itemBox,
+  formGroup,
   fieldLabel,
   smallInput,
   textarea,
   input,
   saveButton,
-} from './editable.css';
-import { ExperienceSection } from '../experience';
-import { ExperienceItem } from '../experience/experience.interface';
+} from "./editable.css";
+import { ExperienceSection } from "../experience";
+import { ExperienceItem } from "../experience/experience.interface";
+import { Section } from "../section";
 
 function generateUniqueId() {
   return Date.now().toString() + Math.random().toString(36).substring(2);
 }
 
 export function EditableSection<T extends EditableItem>({
-  title,
+  sectionTitle,
   fields,
   defaultItem,
+  name,
   onSave,
-}: EditableSectionProps<T>) {
-  const [items, setItems] = useState<T[]>([
-    { ...defaultItem, isEdit: true, id: generateUniqueId() },
-  ]);
+}: EditableSectionProps<T> & { name: string }) {
+  const { values, setFieldValue, validateForm, setTouched, errors } =
+    useFormikContext<any>();
+  const formikItems: T[] = values[name];
 
-  const handleChange = (index: number, key: keyof T, value: string | boolean) => {
-    setItems((prev) => {
-      const updated = [...prev];
-      updated[index] = { ...updated[index], [key]: value };
-      return updated;
-    });
+  const [items, setItems] = useState<T[]>([]);
+
+  // Sync local state with formik on mount or change
+  useEffect(() => {
+    if (formikItems?.length) {
+      setItems(formikItems);
+    }
+  }, [formikItems]);
+
+  const syncAndUpdate = (updated: T[]) => {
+    setItems(updated);
+    setFieldValue(name, updated);
+  };
+
+  const handleChange = (
+    index: number,
+    key: keyof T,
+    value: string | boolean
+  ) => {
+    const updated = [...items];
+    updated[index] = { ...updated[index], [key]: value };
+    syncAndUpdate(updated);
   };
 
   const handleTogglePresent = (index: number) => {
-    setItems((prev) => {
-      const updated = [...prev];
-      updated[index].isPresent = !updated[index].isPresent;
-      if (updated[index].isPresent) updated[index].endDate = '';
-      return updated;
-    });
+    const updated = [...items];
+    updated[index].isPresent = !updated[index].isPresent;
+    if (updated[index].isPresent) updated[index].endDate = "";
+    syncAndUpdate(updated);
   };
 
   const handleAdd = () => {
-    setItems((prev) => [
-      ...prev,
-      { ...defaultItem, isEdit: true, id: generateUniqueId() },
-    ]);
+    const newItem = { ...defaultItem, isEdit: true, id: generateUniqueId() };
+    const updated = [...items, newItem];
+    syncAndUpdate(updated);
   };
 
   const handleDelete = (index: number) => {
-    setItems((prev) => {
-      if (prev.length === 1) return prev;
-      const updated = [...prev];
-      updated.splice(index, 1);
-      return updated;
-    });
+    if (items.length === 1) return;
+    const updated = [...items];
+    updated.splice(index, 1);
+    syncAndUpdate(updated);
   };
 
   const handleSave = (index: number) => {
     const updated = [...items];
     updated[index].isEdit = false;
-    setItems(updated);
+    syncAndUpdate(updated);
     onSave?.(updated);
   };
 
   const toggleEditModeById = (id: string, isEdit: boolean) => {
-    setItems((prev) =>
-      prev.map((item) =>
-        item.id === id ? { ...item, isEdit } : item
-      )
+    const updated = items.map((item) =>
+      item.id === id ? { ...item, isEdit } : item
     );
+    syncAndUpdate(updated);
   };
 
   const viewOnlyItems = useMemo(
     () => items.filter((item) => !item.isEdit),
     [items]
   );
-  const editItems = useMemo(
-    () => items.filter((item) => item.isEdit),
-    [items]
-  );
+  const editItems = useMemo(() => items.filter((item) => item.isEdit), [items]);
 
   return (
-    <div className={section}>
-      <div className={sectionHeader}>
-        <div className={sectionTitle}>{title}</div>
-        <button onClick={handleAdd} className={addButton}>+ Add</button>
-      </div>
+    <Section title={sectionTitle} rightContent={
+      <button onClick={handleAdd} className={addButton}>
+      + Add
+    </button>
+    }>
+      {/* <div className={sectionHeader}>
+        <button onClick={handleAdd} className={addButton}>
+          + Add
+        </button>
+      </div> */}
 
       {viewOnlyItems.length > 0 && (
         <ExperienceSection
@@ -104,12 +118,24 @@ export function EditableSection<T extends EditableItem>({
         const originalIndex = items.findIndex((i) => i.id === item.id);
         return (
           <div key={item.id} className={itemBox}>
-            <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '1rem' }}>
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "space-between",
+                marginBottom: "1rem",
+              }}
+            >
               <div style={{ fontWeight: 600 }}>Item {originalIndex + 1}</div>
               {items.length > 1 && (
                 <button
                   onClick={() => handleDelete(originalIndex)}
-                  style={{ background: 'transparent', border: 'none', color: '#d00', cursor: 'pointer', fontWeight: 'bold' }}
+                  style={{
+                    background: "transparent",
+                    border: "none",
+                    color: "#d00",
+                    cursor: "pointer",
+                    fontWeight: "bold",
+                  }}
                 >
                   🗑 Remove
                 </button>
@@ -119,36 +145,84 @@ export function EditableSection<T extends EditableItem>({
             {fields.map(({ key, label, type }) => {
               const value = item[key] as string;
 
-              if (key === 'startDate') {
+              if (key === "startDate") {
                 return (
-                  <div key="date-block" style={{ marginBottom: '1rem' }}>
-                    <label style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.5rem' }}>
+                  <div key="date-block" style={{ marginBottom: "1rem" }}>
+                    <label
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                        gap: "0.5rem",
+                        marginBottom: "0.5rem",
+                      }}
+                    >
                       <input
                         type="checkbox"
+                        name={`${name}.[${originalIndex}].${key as string}`}
                         checked={item.isPresent || false}
                         onChange={() => handleTogglePresent(originalIndex)}
                       />
                       I am currently working in this role
                     </label>
 
-                    <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
-                      <div>
+                    <div
+                      style={{
+                        display: "flex",
+                        gap: "1rem",
+                        alignItems: "center",
+                      }}
+                    >
+                      <div
+                        className={
+                          !!getIn(
+                            errors,
+                            `${name}.[${originalIndex}].${key as string}`
+                          )
+                            ? formGroup.error
+                            : ""
+                        }
+                        data-placeholder={"Required"}
+                      >
                         <label className={fieldLabel}>Start Date</label>
                         <input
                           type="month"
+                          name={`${name}.[${originalIndex}].${key as string}`}
                           className={smallInput}
-                          value={item.startDate || ''}
-                          onChange={(e) => handleChange(originalIndex, 'startDate', e.target.value)}
+                          value={item.startDate || ""}
+                          onChange={(e) =>
+                            handleChange(
+                              originalIndex,
+                              "startDate",
+                              e.target.value
+                            )
+                          }
                         />
                       </div>
-                      <div>
+                      <div
+                        className={
+                          !!getIn(
+                            errors,
+                            `${name}.[${originalIndex}].${key as string}`
+                          )
+                            ? formGroup.error
+                            : ""
+                        }
+                        data-placeholder={"Required"}
+                      >
                         <label className={fieldLabel}>End Date</label>
                         <input
                           type="month"
                           className={smallInput}
-                          value={item.isPresent ? '' : item.endDate || ''}
+                          name={`${name}.[${originalIndex}].${key as string}`}
+                          value={item.isPresent ? "" : item.endDate || ""}
                           disabled={item.isPresent}
-                          onChange={(e) => handleChange(originalIndex, 'endDate', e.target.value)}
+                          onChange={(e) =>
+                            handleChange(
+                              originalIndex,
+                              "endDate",
+                              e.target.value
+                            )
+                          }
                         />
                       </div>
                     </div>
@@ -156,38 +230,90 @@ export function EditableSection<T extends EditableItem>({
                 );
               }
 
-              if (key === 'endDate') return null;
+              if (key === "endDate") return null;
 
-              if (type === 'textarea') {
+              if (type === "textarea") {
                 return (
-                  <div key={String(key)}>
+                  <div
+                    key={String(key)}
+                    className={
+                      !!getIn(
+                        errors,
+                        `${name}.[${originalIndex}].${key as string}`
+                      )
+                        ? formGroup.error
+                        : ""
+                    }
+                    data-placeholder={"Required"}
+                  >
                     <label className={fieldLabel}>{label}</label>
                     <textarea
                       className={textarea}
-                      value={value || ''}
-                      onChange={(e) => handleChange(originalIndex, key, e.target.value)}
+                      name={`${name}.[${originalIndex}].${key as string}`}
+                      value={value || ""}
+                      onChange={(e) =>
+                        handleChange(originalIndex, key, e.target.value)
+                      }
                     />
                   </div>
                 );
               }
 
               return (
-                <div key={String(key)}>
+                <div
+                  key={String(key)}
+                  className={
+                    !!getIn(
+                      errors,
+                      `${name}.[${originalIndex}].${key as string}`
+                    )
+                      ? formGroup.error
+                      : ""
+                  }
+                  data-placeholder={"Required"}
+                >
                   <label className={fieldLabel}>{label}</label>
                   <input
-                    type={type === 'date' ? 'month' : type}
-                    className={type === 'date' ? smallInput : input}
-                    value={value || ''}
-                    onChange={(e) => handleChange(originalIndex, key, e.target.value)}
+                    type={type === "date" ? "month" : type}
+                    name={`${name}.[${originalIndex}].${key as string}`}
+                    className={type === "date" ? smallInput : input}
+                    value={value || ""}
+                    onChange={(e) =>
+                      handleChange(originalIndex, key, e.target.value)
+                    }
                   />
                 </div>
               );
             })}
 
-            <div style={{ textAlign: 'right', marginTop: '1.5rem' }}>
+            <div style={{ textAlign: "right", marginTop: "1.5rem" }}>
               <button
-                onClick={() => handleSave(originalIndex)}
+                type="button"
                 className={saveButton}
+                onClick={async () => {
+                  const touchedFields = Object.keys(
+                    items[originalIndex]
+                  ).reduce((acc, key) => {
+                    acc[`${name}[${originalIndex}].${key}`] = true;
+                    return acc;
+                  }, {} as Record<string, boolean>);
+
+                  setTouched(touchedFields, false); // mark fields as touched
+
+                  const formErrors = await validateForm();
+
+                  // ✔ grab only the errors for this array element
+                  const itemErrors = getIn(
+                    formErrors,
+                    `${name}[${originalIndex}]`
+                  );
+                  const hasErrors =
+                    itemErrors && Object.keys(itemErrors).length > 0; // true if any keys
+
+                  if (!hasErrors) {
+                    handleSave(originalIndex); // no errors → switch to view mode
+                  }
+                }}
               >
                 Save
               </button>
@@ -195,6 +321,6 @@ export function EditableSection<T extends EditableItem>({
           </div>
         );
       })}
-    </div>
+    </Section>
   );
 }

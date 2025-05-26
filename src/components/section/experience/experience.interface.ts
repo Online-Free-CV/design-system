@@ -1,5 +1,5 @@
 export type ExperienceItem = {
-  title: string;
+  title?: string;
   subtitle?: string;
   description?: string;
   startDate?: string;
@@ -12,5 +12,5 @@ export type ExperienceItem = {
 export type ExperienceSectionProps = {
   sectionTitle?: string;
   items: ExperienceItem[];
-  onEdit?: (index: number, isEdit: boolean) => void; 
+  onEdit?: (index: number) => void; 
 };

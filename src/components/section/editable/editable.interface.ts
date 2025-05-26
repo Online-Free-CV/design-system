@@ -1,9 +1,9 @@
 export type FieldType = 'text' | 'textarea' | 'date';
 
 export interface EditableItem {
-  title?: string;
   id?: string;
   subtitle?: string;
+  company?: string;
   startDate?: string;
   endDate?: string;
   isPresent?: boolean;
@@ -19,7 +19,7 @@ export interface FieldConfig<T> {
 }
 
 export interface EditableSectionProps<T extends EditableItem> {
-  title: string;
+  sectionTitle?: string;
   fields: FieldConfig<T>[];
   defaultItem: T;
   onSave?: (items: T[]) => void;
