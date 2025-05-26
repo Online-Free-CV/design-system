@@ -1,4 +1,4 @@
-import { getIn, useFormikContext } from "formik";
+import { getIn, useFormikContext, FormikTouched } from "formik";
 import { useEffect, useMemo, useState } from "react";
 import { ExperienceSection } from "../experience";
 import { ExperienceItem } from "../experience/experience.interface";
@@ -11,9 +11,13 @@ import {
   itemBox,
   saveButton,
   smallInput,
-  textarea
+  textarea,
 } from "./editable.css";
-import { EditableItem, EditableSectionProps } from "./editable.interface";
+import {
+  EditableItem,
+  EditableSectionProps,
+  FormValues,
+} from "./editable.interface";
 
 function generateUniqueId() {
   return Date.now().toString() + Math.random().toString(36).substring(2);
@@ -27,8 +31,9 @@ export function EditableSection<T extends EditableItem>({
   onSave,
 }: EditableSectionProps<T> & { name: string }) {
   const { values, setFieldValue, validateForm, setTouched, errors } =
-    useFormikContext<Record<string, T[]>>();
-  const formikItems: T[] = values[name] || [];
+    useFormikContext<FormValues<T>>();
+
+  const formikItems = useMemo(() => values[name] || [], [values, name]);
 
   const [items, setItems] = useState<T[]>([]);
 
@@ -95,11 +100,14 @@ export function EditableSection<T extends EditableItem>({
   const editItems = useMemo(() => items.filter((item) => item.isEdit), [items]);
 
   return (
-    <Section title={sectionTitle} rightContent={
-      <button onClick={handleAdd} className={addButton}>
-      + Add
-    </button>
-    }>
+    <Section
+      title={sectionTitle}
+      rightContent={
+        <button onClick={handleAdd} className={addButton}>
+          + Add
+        </button>
+      }
+    >
       {/* <div className={sectionHeader}>
         <button onClick={handleAdd} className={addButton}>
           + Add
@@ -260,8 +268,10 @@ export function EditableSection<T extends EditableItem>({
 
               if (type === "tags") {
                 const tags = (item[key] as string[]) || [];
-              
-                const handleAddTag = (e: React.KeyboardEvent<HTMLInputElement>) => {
+
+                const handleAddTag = (
+                  e: React.KeyboardEvent<HTMLInputElement>
+                ) => {
                   if (e.key === "Enter") {
                     e.preventDefault();
                     const newTag = e.currentTarget.value.trim();
@@ -272,17 +282,20 @@ export function EditableSection<T extends EditableItem>({
                     }
                   }
                 };
-              
+
                 const handleRemoveTag = (tagToRemove: string) => {
                   const updatedTags = tags.filter((t) => t !== tagToRemove);
                   handleChange(originalIndex, key, updatedTags);
                 };
-              
+
                 return (
                   <div
                     key={String(key)}
                     className={
-                      getIn(errors, `${name}.[${originalIndex}].${key as string}`)
+                      getIn(
+                        errors,
+                        `${name}.[${originalIndex}].${key as string}`
+                      )
                         ? formGroup.error
                         : ""
                     }
@@ -295,7 +308,14 @@ export function EditableSection<T extends EditableItem>({
                       placeholder="Type and press Enter"
                       className={input}
                     />
-                    <div style={{ marginTop: "0.5rem", display: "flex", flexWrap: "wrap", gap: "0.5rem" }}>
+                    <div
+                      style={{
+                        marginTop: "0.5rem",
+                        display: "flex",
+                        flexWrap: "wrap",
+                        gap: "0.5rem",
+                      }}
+                    >
                       {tags.map((tag, i) => (
                         <span
                           key={i}
@@ -327,16 +347,13 @@ export function EditableSection<T extends EditableItem>({
                     </div>
                   </div>
                 );
-              }              
+              }
 
               return (
                 <div
                   key={String(key)}
                   className={
-                    getIn(
-                      errors,
-                      `${name}.[${originalIndex}].${key as string}`
-                    )
+                    getIn(errors, `${name}.[${originalIndex}].${key as string}`)
                       ? formGroup.error
                       : ""
                   }
@@ -361,14 +378,22 @@ export function EditableSection<T extends EditableItem>({
                 type="button"
                 className={saveButton}
                 onClick={async () => {
-                  const touchedFields = Object.keys(
-                    items[originalIndex]
-                  ).reduce((acc, key) => {
-                    acc[`${name}[${originalIndex}].${key}`] = true;
-                    return acc;
-                  }, {} as Record<string, boolean>);
+                  const touchedFields = {} as FormikTouched<T>;
 
-                  setTouched(touchedFields, false); // mark fields as touched
+                  (Object.keys(items[originalIndex]) as (keyof T)[]).forEach(
+                    (key) => {
+                      touchedFields[key] = true as FormikTouched<T>[keyof T];
+                    }
+                  );
+
+                  const formikTouched = {
+                    [name]: Array(items.length).fill({}) as FormikTouched<T>[],
+                  } as FormikTouched<FormValues<T>>;
+
+                  (formikTouched[name] as FormikTouched<T>[])[originalIndex] =
+                    touchedFields;
+
+                  setTouched(formikTouched, false);
 
                   const formErrors = await validateForm();
 

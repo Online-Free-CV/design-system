@@ -8,9 +8,5 @@ export { IconButton } from '@components/iconButton';
 export { Input } from '@components/input';
 export { Socials } from '@components/socials';
 export { Spinner } from "@components/spinner";
-export { Appform, EditableField, FloatingPublishBar, Yup, useFormikContext } from '@components/form';
-export { EditableSection, ExperienceSection, Section } from "@components/section"
-export type {
-    EditableItem,
-    FieldConfig
-} from "@components/section"
+export { Appform, EditableField, FloatingPublishBar, Yup } from '@components/form';
+export { EditableSection, ExperienceSection, Section } from "@components/section";
