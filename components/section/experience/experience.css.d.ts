@@ -1,0 +1,13 @@
+export declare const experienceList: string;
+export declare const experienceItem: string;
+export declare const logo: string;
+export declare const content: string;
+export declare const titleRow: string;
+export declare const title: string;
+export declare const dateRange: string;
+export declare const subtitle: string;
+export declare const location: string;
+export declare const description: string;
+export declare const tags: string;
+export declare const tag: string;
+export declare const editButton: string;

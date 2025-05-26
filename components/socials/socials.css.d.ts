@@ -1,2 +1,14 @@
 export declare const socialsStyle: string;
 export declare const socialItemStyle: string;
+export declare const transparentSocialItemStyle: string;
+export declare const accordionStyle: string;
+export declare const formStyle: string;
+export declare const formGroupStyle: string;
+export declare const formActionsStyle: string;
+export declare const formLabelStyle: string;
+export declare const formInputStyle: string;
+export declare const formErrorStyle: string;
+export declare const socialIconsContainer: string;
+export declare const socialInputRow: string;
+export declare const socialIcon: string;
+export declare const urlInput: string;

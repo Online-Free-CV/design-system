@@ -1,0 +1,12 @@
+export declare const section: string;
+export declare const sectionHeader: string;
+export declare const sectionTitle: string;
+export declare const addButton: string;
+export declare const itemBox: string;
+export declare const formGroup: Record<"error", string>;
+export declare const fieldLabel: string;
+export declare const input: string;
+export declare const smallInput: string;
+export declare const textarea: string;
+export declare const saveButton: string;
+export declare const editButton: string;

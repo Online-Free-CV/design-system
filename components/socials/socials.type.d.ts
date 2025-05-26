@@ -1,1 +1,1 @@
-export type IconTypes = "facebook" | "linkedIn" | "youtube" | "github" | "instagram" | "twitter";
+export type IconTypes = "facebook" | "linkedin" | "youtube" | "github" | "instagram" | "twitter";
