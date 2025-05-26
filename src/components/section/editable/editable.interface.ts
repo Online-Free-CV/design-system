@@ -27,3 +27,7 @@ export interface EditableSectionProps<T extends EditableItem> {
   defaultItem: T;
   onSave?: (items: T[]) => void;
 }
+
+export interface FormValues<T> {
+  [key: string]: T[];
+}
