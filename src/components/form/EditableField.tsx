@@ -5,9 +5,10 @@ import { editableFieldStyle } from "./editable-field.css";
 
 interface EditableFieldProps {
   name: string;
+  active?: boolean;
 }
 
-export const EditableField: React.FC<EditableFieldProps> = ({ name }) => {
+export const EditableField: React.FC<EditableFieldProps> = ({ name, active }) => {
   const { values, setFieldValue, errors } = useFormikContext<FormikValues>();
   const [isEditing, setIsEditing] = React.useState(false);
   const editableRef = React.useRef<HTMLDivElement>(null);
@@ -75,6 +76,7 @@ export const EditableField: React.FC<EditableFieldProps> = ({ name }) => {
         className={cx(editableFieldStyle.default, {
           [editableFieldStyle.editing]: isEditing,
           [editableFieldStyle.error]: hasError,
+          [editableFieldStyle.active]: active,
         })}
       >
         {value}

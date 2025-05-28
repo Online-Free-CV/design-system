@@ -21,6 +21,12 @@ export const editableFieldStyle = styleVariants({
       outline: `1px solid  ${tokens.colors.lightGray}`,
     },
   ],
+  active: [
+    baseStyle,
+    {
+      outline: `1px solid  ${tokens.colors.lightGray}`,
+    },
+  ],
   error: [
     baseStyle,
     { 

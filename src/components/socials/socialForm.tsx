@@ -95,7 +95,7 @@ export const SocialForm: React.FC<SocialFormProps> = ({ fieldName }) => {
               <div className={socialInputRow}>
                 <div className={socialIcon}>{socialIcons[platform]}</div>
                 <div className={urlInput}>
-                  <EditableField name={`${fieldName}[${profileIndex}].url`} />
+                  <EditableField name={`${fieldName}[${profileIndex}].url`} active={true} />
                 </div>
               </div>
             </div>
