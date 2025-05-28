@@ -9,8 +9,6 @@ export const accordionContainer = style({
 
 export const accordionContent = style({
   padding: tokens.spacing.md,
-  border: `1px solid ${tokens.colors.lightGray}`,
   borderRadius: tokens.radii.sm,
   backgroundColor: tokens.colors.white,
-  marginTop: tokens.spacing.md,
 });

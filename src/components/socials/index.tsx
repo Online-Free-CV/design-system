@@ -67,35 +67,9 @@ export const SocialsDisplay = ({
 
 // Full editable version that works with Formik
 export const Socials = ({ fieldName }: { fieldName: string }) => {
-  const [isAccordionOpen, setIsAccordionOpen] = useState(false);
-  const { values } = useFormikContext<FormikValues>();
-
-  // Get social profiles from the Formik context using the provided field name
-  const profiles: SocialItemProps[] = values[fieldName] || [];
-
-  const toggleAccordion = (e: React.MouseEvent) => {
-    e.preventDefault(); // Prevent form submission
-    e.stopPropagation(); // Stop event propagation
-    setIsAccordionOpen(!isAccordionOpen);
-  };
-
   return (
-    <div>
-      <div className={socialsStyle}>
-        <SocialsDisplay socialProfiles={profiles} />
-        <Button
-          onClick={toggleAccordion}
-          label=""
-          type="button"
-          className={transparentSocialItemStyle}
-        >
-          <Add />
-        </Button>
-      </div>
-
-      <Accordion isOpen={isAccordionOpen}>
-        <SocialForm fieldName={fieldName} />
-      </Accordion>
-    </div>
+    <Accordion isOpen={true}>
+      <SocialForm fieldName={fieldName} />
+    </Accordion>
   );
 };

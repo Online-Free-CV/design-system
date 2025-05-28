@@ -40,7 +40,6 @@ export const accordionStyle = style({
   width: "100%",
   marginTop: tokens.spacing.md,
   padding: tokens.spacing.md,
-  border: `1px solid ${tokens.colors.lightGray}`,
   borderRadius: tokens.radii.sm,
   backgroundColor: tokens.colors.white,
 });
@@ -115,7 +114,7 @@ export const formErrorStyle = style({
 export const socialIconsContainer = style({
   display: "flex",
   flexDirection: "column",
-  gap: tokens.spacing.md,
+  gap: tokens.spacing.sm,
   width: "100%",
 });
 
@@ -123,9 +122,7 @@ export const socialInputRow = style({
   display: "flex",
   alignItems: "center",
   gap: tokens.spacing.sm,
-  border: `1px solid ${tokens.colors.lightGray}`,
   borderRadius: tokens.radii.xs,
-  padding: `4px 8px`,
 });
 
 export const socialIcon = style({
