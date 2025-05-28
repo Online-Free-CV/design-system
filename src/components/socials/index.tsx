@@ -1,22 +1,17 @@
 import {
-  Add,
   Facebook,
   Github,
   Instagram,
   LinkedIn,
   Twitter,
-  Youtube,
+  Youtube
 } from "@assets/icons/socials";
 import { Accordion } from "@components/accordion";
-import { Button } from "@components/button";
 import { Link } from "@components/link";
 import {
   socialItemStyle,
-  socialsStyle,
-  transparentSocialItemStyle,
+  socialsStyle
 } from "@components/socials/socials.css";
-import { FormikValues, useFormikContext } from "formik";
-import { useState } from "react";
 import { SocialForm } from "./socialForm";
 import { SocialItemProps } from "./socials.interface";
 
