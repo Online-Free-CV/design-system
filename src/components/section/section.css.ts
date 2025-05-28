@@ -13,10 +13,11 @@ export const sectionHeader = style({
 })
 
 export const sectionDetailsStyle = style({
-  minHeight: `calc(${tokens.size.full} - 250px)`,
   backgroundColor: tokens.colors.white,
   borderRadius: tokens.radii.md,
   padding: `${tokens.spacing.sm} ${tokens.spacing.xxl}`,
+  marginBottom: tokens.spacing.md,
+
 });
 
 export const sectionDetailsTitleStyle = style({

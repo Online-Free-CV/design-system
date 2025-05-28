@@ -76,6 +76,8 @@ To run the development server:
 npm run dev
 # or
 yarn dev
+# or
+pnpm dev
 ```
 
 To build the project:
@@ -84,14 +86,18 @@ To build the project:
 npm run build
 # or
 yarn build
+# or
+pnpm build
 ```
 
-To run tests:
+To run storybook:
 
 ```bash
-npm run test
+npm run storybook
 # or
-yarn test
+yarn storybook
+# or
+pnpm storybook
 ```
 
 ---
@@ -105,8 +111,8 @@ This project is licensed under the MIT License.
 ## 👤 Author
 
 - **Liaqat Saeed**
-  - [Twitter](https://twitter.com/liaqatsaeed6777)
-  - [GitHub](https://github.com/liaqatsaeed6777)
+  - [Linkedin](https://pk.linkedin.com/in/liaqat-saeed)
+  - [GitHub](https://github.com/liaqatsaeed)
 
 ---
 
