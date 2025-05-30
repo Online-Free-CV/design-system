@@ -10,3 +10,5 @@ export declare const smallInput: string;
 export declare const textarea: string;
 export declare const saveButton: string;
 export declare const editButton: string;
+export declare const inputGroup: string;
+export declare const inputContainer: string;

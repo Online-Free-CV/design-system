@@ -22,6 +22,8 @@ export interface EditableSectionProps<T extends EditableItem> {
     sectionTitle?: string;
     fields: FieldConfig<T>[];
     defaultItem: T;
+    displayOnly?: boolean;
+    sectionItems?: T[];
     onSave?: (items: T[]) => void;
 }
 export interface FormValues<T> {
