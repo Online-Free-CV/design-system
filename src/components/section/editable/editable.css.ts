@@ -22,9 +22,16 @@ export const addButton = style({
   backgroundColor: "#007bff",
   color: "#fff",
   border: "none",
-  padding: `${tokens.spacing.sm} ${tokens.spacing.md}`,
+  padding: `${tokens.spacing.sm}`,
+  paddingLeft: tokens.spacing.md,
   borderRadius: tokens.spacing.sm,
   cursor: "pointer",
+  position: "relative",
+  ":before": {
+    content: "+",
+    position: "absolute",
+    left: tokens.spacing.sm,
+  },
 });
 
 export const itemBox = style({
@@ -73,7 +80,7 @@ export const input = style({
 export const smallInput = style([
   input,
   {
-    width: "180px",
+    flex: 1,
   },
 ]);
 
@@ -116,3 +123,21 @@ export const editButton = style({
     },
   },
 });
+
+export const inputGroup = style({
+  display: "flex",
+  gap: "1rem",
+  alignItems: "center",
+
+  "@media": {
+    "(max-width: 768px)": {
+      flexDirection: "column",
+    },
+  },
+})
+
+export const inputContainer = style({
+  display: "flex",
+  flexDirection: "column",
+  width: "100%",
+})

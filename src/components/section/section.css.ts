@@ -15,7 +15,7 @@ export const sectionHeader = style({
 export const sectionDetailsStyle = style({
   backgroundColor: tokens.colors.white,
   borderRadius: tokens.radii.md,
-  padding: `${tokens.spacing.sm} ${tokens.spacing.xxl}`,
+  padding: `${tokens.spacing.sm} ${tokens.spacing.md}`,
   marginBottom: tokens.spacing.md,
 
 });
@@ -24,7 +24,7 @@ export const sectionDetailsTitleStyle = style({
   margin: 0,
   display: "flex",
   alignItems: "center",
-  gap: "40px",
+  gap: tokens.spacing.sm,
   width: "calc(100% - 70px)"
 });
 

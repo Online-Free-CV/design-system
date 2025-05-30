@@ -67,10 +67,9 @@ export const ExperienceSection: React.FC<ExperienceSectionProps> = ({
                 {item.endDate ? formatDate(item.endDate) : "Present"}
                 <span>
                   {" "}
-                  •{" "}
                   {item.startDate &&
                     item.endDate &&
-                    calculateDuration(item.startDate, item.endDate)}
+                    `• ${calculateDuration(item.startDate, item.endDate)}`}
                 </span>
               </span>
               {item.subtitle && (

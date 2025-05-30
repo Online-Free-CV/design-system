@@ -8,6 +8,8 @@ import {
   fieldLabel,
   formGroup,
   input,
+  inputContainer,
+  inputGroup,
   itemBox,
   saveButton,
   smallInput,
@@ -18,6 +20,7 @@ import {
   EditableSectionProps,
   FormValues,
 } from "./editable.interface";
+import cx from "classnames";
 
 function generateUniqueId() {
   return Date.now().toString() + Math.random().toString(36).substring(2);
@@ -104,7 +107,7 @@ export function EditableSection<T extends EditableItem>({
       title={sectionTitle}
       rightContent={
         <button onClick={handleAdd} className={addButton}>
-          + Add
+          Add
         </button>
       }
     >
@@ -172,22 +175,17 @@ export function EditableSection<T extends EditableItem>({
                       I am currently working in this role
                     </label>
 
-                    <div
-                      style={{
-                        display: "flex",
-                        gap: "1rem",
-                        alignItems: "center",
-                      }}
-                    >
+                    <div className={inputGroup}>
                       <div
-                        className={
+                        className={cx(
+                          inputContainer,
                           getIn(
                             errors,
                             `${name}.[${originalIndex}].${key as string}`
                           )
                             ? formGroup.error
                             : ""
-                        }
+                        )}
                         data-placeholder={"Required"}
                       >
                         <label className={fieldLabel}>Start Date</label>
@@ -206,14 +204,15 @@ export function EditableSection<T extends EditableItem>({
                         />
                       </div>
                       <div
-                        className={
+                        className={cx(
+                          inputContainer,
                           getIn(
                             errors,
                             `${name}.[${originalIndex}].${key as string}`
                           )
                             ? formGroup.error
                             : ""
-                        }
+                        )}
                         data-placeholder={"Required"}
                       >
                         <label className={fieldLabel}>End Date</label>
@@ -274,9 +273,13 @@ export function EditableSection<T extends EditableItem>({
                 ) => {
                   if (e.key === "Enter") {
                     e.preventDefault();
-                    const newTag = e.currentTarget.value.trim();
-                    if (newTag && !tags.includes(newTag)) {
-                      const updatedTags = [...tags, newTag];
+                    const newTags = e.currentTarget.value
+                      .split(",")
+                      .map((tag) => tag.trim())
+                      .filter((tag) => tag && !tags.includes(tag));
+
+                    if (newTags.length > 0) {
+                      const updatedTags = [...tags, ...newTags];
                       handleChange(originalIndex, key, updatedTags);
                       e.currentTarget.value = "";
                     }
@@ -305,6 +308,7 @@ export function EditableSection<T extends EditableItem>({
                     <input
                       type="text"
                       onKeyDown={handleAddTag}
+                      title="Type and press Enter"
                       placeholder="Type and press Enter"
                       className={input}
                     />

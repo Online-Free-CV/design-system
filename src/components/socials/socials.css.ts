@@ -48,6 +48,7 @@ export const formStyle = style({
   display: "flex",
   flexDirection: "column",
   gap: tokens.spacing.md,
+  padding: `${tokens.spacing.none} ${tokens.spacing.lg}`,
 });
 
 export const formGroupStyle = style({
@@ -100,7 +101,7 @@ export const formLabelStyle = style({
 });
 
 export const formInputStyle = style({
-  padding: tokens.spacing.sm,
+  padding: tokens.spacing.lg,
   borderRadius: tokens.radii.xs,
   border: `1px solid ${tokens.colors.lightGray}`,
 });
@@ -141,10 +142,10 @@ export const urlInput = style({
   outline: "none",
   minWidth: 0,
   border: 0,
-  height: "20px",
+
 });
 
 globalStyle(`${urlInput} > span`, {
-  height: "100%",
+  minHeight: "20px",
   width: "100%",
 });
