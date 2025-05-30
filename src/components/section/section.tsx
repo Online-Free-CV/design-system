@@ -22,7 +22,7 @@ export const Section: React.FC<SectionProps> = ({
     <section className={cx(sectionDetailsStyle, className)}>
       <div className={sectionHeader}>
         <div className={cx(sectionDetailsTitleStyle, titleFontStyle)}>
-          <Text variant="h1">{title}</Text>
+          <Text variant="h3">{title}</Text>
           <span></span>
         </div>
         {rightContent && (
