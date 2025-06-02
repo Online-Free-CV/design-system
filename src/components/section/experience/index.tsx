@@ -1,24 +1,26 @@
 import React from "react";
+import { calculateDuration, formatDate } from "../../../utils/dateUtils";
 import {
-  experienceItem,
-  logo,
   content,
-  titleRow,
-  title,
   dateRange,
-  subtitle,
-  location,
   description,
-  tags,
-  tag,
+  editButton,
+  experienceItem,
   experienceList,
-  editButton
+  location,
+  logo,
+  paragraph,
+  subtitle,
+  tag,
+  tags,
+  title,
+  titleRow
 } from "./experience.css";
 import { ExperienceSectionProps } from "./experience.interface";
-import { calculateDuration, formatDate } from "../../../utils/dateUtils";
 
 export const ExperienceSection: React.FC<ExperienceSectionProps> = ({
   sectionTitle,
+  itemDisplayDirection = "column",
   items,
   onEdit
 }) => {
@@ -28,7 +30,7 @@ export const ExperienceSection: React.FC<ExperienceSectionProps> = ({
         sectionTitle && <h2 className={sectionTitle}>{sectionTitle}</h2>
       }
 
-      <ul className={experienceList}>
+      <ul className={experienceList({ layout: itemDisplayDirection })}>
         {items.map((item, idx) => (
           <li key={idx} className={experienceItem}>
             {item.logoUrl ? (
@@ -63,8 +65,8 @@ export const ExperienceSection: React.FC<ExperienceSectionProps> = ({
                 )}
               </div>
               <span className={dateRange}>
-                {item.startDate && formatDate(item.startDate)} –{" "}
-                {item.endDate ? formatDate(item.endDate) : "Present"}
+                {item.startDate && formatDate(item.startDate)} 
+                {item.endDate ? ` – ${formatDate(item.endDate)}` : item.startDate && " - Present"}
                 <span>
                   {" "}
                   {item.startDate &&
@@ -81,6 +83,21 @@ export const ExperienceSection: React.FC<ExperienceSectionProps> = ({
                 </div>
               )}
 
+              {item.email && (
+                <p className={paragraph}><b>Email: </b>{item.email}</p>
+              )}
+              {item.phone && (
+                <p className={paragraph}><b>Phone: </b> {item.phone}</p>
+              )}
+              
+              {item.website && (
+                <p className={paragraph}>
+                  <b>Website: </b>
+                  <a href={item.website} target="_blank" rel="noopener noreferrer">
+                  {item.website}
+                  </a>
+                </p>
+              )}  
               {item.description && (
                 <p className={description}>{item.description}</p>
               )}
