@@ -1,12 +1,25 @@
 import { tokens } from '@styles/theme.css';
 import { style } from '@vanilla-extract/css';
+import { recipe } from "@vanilla-extract/recipes";
 
-export const experienceList = style({
-  padding: tokens.spacing.none,
-  display: 'flex',
-  flexDirection: 'column',
-  gap: tokens.spacing.md
-})
+export const experienceList = recipe({
+  base: {
+    padding: tokens.spacing.none,
+    display: 'flex',
+    flexDirection: 'column',
+    gap: tokens.spacing.md
+  },
+  variants: {
+    layout: {
+      row: {
+        flexDirection: 'row',
+      },
+      column: {
+        flexDirection: 'column',
+      },
+    },
+  },
+});
 
 export const experienceItem = style({
   display: 'flex',
@@ -82,6 +95,11 @@ export const tag = style({
   borderRadius: '9999px',
 });
 
+export const paragraph = style({
+  fontSize: tokens.fontSize.sm,
+  margin: tokens.spacing.none
+});
+
 export const editButton = style({
   background: 'none',
   border: 'none',
@@ -100,5 +118,13 @@ export const editButton = style({
       outlineOffset: '2px',
     },
   },
+});
+
+export const flexCol = style({
+  flexDirection: 'column'
+});
+
+export const flexRow = style({
+  flexDirection: 'row'
 });
 

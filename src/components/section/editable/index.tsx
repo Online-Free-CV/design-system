@@ -28,6 +28,7 @@ function generateUniqueId() {
 
 export function EditableSection<T extends EditableItem>({
   sectionTitle,
+  itemDisplayDirection = "column",
   fields,
   defaultItem,
   name,
@@ -120,6 +121,7 @@ export function EditableSection<T extends EditableItem>({
       {viewOnlyItems.length > 0 && (
         <ExperienceSection
           items={viewOnlyItems as ExperienceItem[]}
+          itemDisplayDirection={itemDisplayDirection}
           onEdit={(index) => toggleEditModeById(viewOnlyItems[index].id!, true)}
         />
       )}

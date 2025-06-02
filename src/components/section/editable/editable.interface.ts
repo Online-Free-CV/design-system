@@ -5,6 +5,9 @@ export interface EditableItem {
   subtitle?: string;
   university?: string;
   company?: string;
+  email?: string;
+  phone?: string;
+  website?: string;
   location?: string;
   startDate?: string;
   endDate?: string;
@@ -23,6 +26,7 @@ export interface FieldConfig<T> {
 
 export interface EditableSectionProps<T extends EditableItem> {
   sectionTitle?: string;
+  itemDisplayDirection?: 'row' | 'column';
   fields: FieldConfig<T>[];
   defaultItem: T;
   displayOnly?: boolean
