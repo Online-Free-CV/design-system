@@ -1,13 +1,11 @@
 import {
-    EditableSection,
-    Section
+  EditableSection,
+  Section
 } from "@components/section";
-import { SkillBarsGrid } from "../skills/skills-bar-grid";
-import {SkillsSection} from "../skills/skills-section";
+import { SkillsSection } from "../skills/skills-section";
 
 import type { Meta, StoryObj } from "@storybook/react";
 import { Appform, Yup } from "./index";
-import { logo } from "@components/section/experience/experience.css";
 
 const experienceItemSchema = Yup.object().shape({
   title: Yup.string().required("Title is required"),
