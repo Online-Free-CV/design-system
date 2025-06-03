@@ -3,6 +3,7 @@ import {
   Section
 } from "@components/section";
 import { SkillsSection } from "../skills/skills-section";
+import { ColorPickerDropdown } from "../colorPicker";
 
 import type { Meta, StoryObj } from "@storybook/react";
 import { Appform, Yup } from "./index";
@@ -145,6 +146,7 @@ export const Default: Story = {
           level: 80,
           years: 5,
       }],
+      themeColor: "OnlineFreeCV Blue",
         },
         onSubmit: (values, actions) => {
       alert(`Form submitted: ${JSON.stringify(values)}`);
@@ -153,6 +155,11 @@ export const Default: Story = {
     validationSchema: validationSchema,
     children: (
         <>
+          <Section title="Theme Color">
+         <ColorPickerDropdown name="themeColor"  />
+
+      </Section>
+       
       <Section title="Technical Skills">
         <SkillsSection name="skills"  barColor="red"/>
 

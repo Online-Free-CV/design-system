@@ -21,9 +21,11 @@ interface SkillsSectionProps {
   barColor?: string; // default is #59c15d
 }
 
-export const SkillsSection: React.FC<SkillsSectionProps> = ({ name, barColor }) => {
+export const SkillsSection: React.FC<SkillsSectionProps> = ({ name }) => {
   const { values, setFieldValue } = useFormikContext<any>();
   const skills: Skill[] = getIn(values, name) || [];
+
+  const {themeColor} = values;
 
   const [newSkill, setNewSkill] = useState("");
   const [newLevel, setNewLevel] = useState<number | "">("");
@@ -71,7 +73,7 @@ export const SkillsSection: React.FC<SkillsSectionProps> = ({ name, barColor }) 
   return (
     <div className={dynamicSkillsContainer}>
       {/* Skill preview bar with name, progress and years */}
-      <SkillBarsGrid skills={skills} onDelete={handleDelete} barColor={barColor} />
+      <SkillBarsGrid skills={skills} onDelete={handleDelete} barColor={themeColor.base} />
 
       {/* Input Row */}
       <div>
@@ -116,7 +118,7 @@ export const SkillsSection: React.FC<SkillsSectionProps> = ({ name, barColor }) 
             />
           </div>
 
-          <button type="button" onClick={handleAdd} className={addButton}>
+          <button type="button" onClick={handleAdd} className={addButton} style={{backgroundImage: themeColor?.gradient}}>
             Add
           </button>
         </div>
