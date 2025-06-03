@@ -39,6 +39,7 @@ export function EditableSection<T extends EditableItem>({
 
   const formikItems = useMemo(() => values[name] || [], [values, name]);
 
+
   const [items, setItems] = useState<T[]>([]);
 
   // Sync local state with formik on mount or change
@@ -107,7 +108,7 @@ export function EditableSection<T extends EditableItem>({
     <Section
       title={sectionTitle}
       rightContent={
-        <button onClick={handleAdd} className={addButton}>
+        <button onClick={handleAdd} className={addButton} style={{backgroundImage: (values as any)?.themeColor?.gradient}}>
           Add
         </button>
       }
@@ -172,6 +173,9 @@ export function EditableSection<T extends EditableItem>({
                         type="checkbox"
                         name={`${name}.[${originalIndex}].${key as string}`}
                         checked={item.isPresent || false}
+                        style={{
+                          accentColor: (values as any)?.themeColor?.base
+                        }}
                         onChange={() => handleTogglePresent(originalIndex)}
                       />
                       I am currently working in this role

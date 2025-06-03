@@ -14,7 +14,7 @@ import {
   tag,
   tags,
   title,
-  titleRow
+  titleRow,
 } from "./experience.css";
 import { ExperienceSectionProps } from "./experience.interface";
 
@@ -22,13 +22,11 @@ export const ExperienceSection: React.FC<ExperienceSectionProps> = ({
   sectionTitle,
   itemDisplayDirection = "column",
   items,
-  onEdit
+  onEdit,
 }) => {
   return (
     <>
-      {
-        sectionTitle && <h2 className={sectionTitle}>{sectionTitle}</h2>
-      }
+      {sectionTitle && <h2 className={sectionTitle}>{sectionTitle}</h2>}
 
       <ul className={experienceList({ layout: itemDisplayDirection })}>
         {items.map((item, idx) => (
@@ -59,14 +57,29 @@ export const ExperienceSection: React.FC<ExperienceSectionProps> = ({
               <div className={titleRow}>
                 <h3 className={title}>{item.title}</h3>
                 {onEdit && (
-                  <button onClick={() => onEdit(idx)} className={editButton}>
-                    ✏️ Edit
+                  <button
+                    onClick={() => onEdit(idx)}
+                    className={editButton}
+                    aria-label="Edit"
+                    title="Edit"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      viewBox="0 0 24 24"
+                      fill="currentColor"
+                    >
+                      <path d="M3 17.25V21h3.75l11.06-11.06-3.75-3.75L3 17.25zM20.71 7.04a1 1 0 0 0 0-1.41l-2.34-2.34a1 1 0 0 0-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z" />
+                    </svg>
                   </button>
                 )}
               </div>
               <span className={dateRange}>
-                {item.startDate && formatDate(item.startDate)} 
-                {item.endDate ? ` – ${formatDate(item.endDate)}` : item.startDate && " - Present"}
+                {item.startDate && formatDate(item.startDate)}
+                {item.endDate
+                  ? ` – ${formatDate(item.endDate)}`
+                  : item.startDate && " - Present"}
                 <span>
                   {" "}
                   {item.startDate &&
@@ -84,20 +97,29 @@ export const ExperienceSection: React.FC<ExperienceSectionProps> = ({
               )}
 
               {item.email && (
-                <p className={paragraph}><b>Email: </b>{item.email}</p>
+                <p className={paragraph}>
+                  <b>Email: </b>
+                  {item.email}
+                </p>
               )}
               {item.phone && (
-                <p className={paragraph}><b>Phone: </b> {item.phone}</p>
+                <p className={paragraph}>
+                  <b>Phone: </b> {item.phone}
+                </p>
               )}
-              
+
               {item.website && (
                 <p className={paragraph}>
                   <b>Website: </b>
-                  <a href={item.website} target="_blank" rel="noopener noreferrer">
-                  {item.website}
+                  <a
+                    href={item.website}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {item.website}
                   </a>
                 </p>
-              )}  
+              )}
               {item.description && (
                 <p className={description}>{item.description}</p>
               )}

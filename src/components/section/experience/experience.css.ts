@@ -108,6 +108,8 @@ export const editButton = style({
   cursor: 'pointer',
   padding: '4px',
   lineHeight: 1,
+  backgroundColor: "rgba(0, 0, 0, 0.05)",
+  borderRadius: tokens.radii.sm,
 
   selectors: {
     '&:hover': {

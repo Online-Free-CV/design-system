@@ -2,6 +2,7 @@ import * as React from "react";
 import cx from "classnames";
 import { sectionHeader, sectionDetailsStyle, sectionDetailsTitleStyle } from "./section.css";
 import { Text } from "../text";
+import { useFormikContext } from "formik";
 
 interface SectionProps {
   title?: string;
@@ -18,12 +19,13 @@ export const Section: React.FC<SectionProps> = ({
   titleFontStyle,
   rightContent,
 }) => {
+  const themeColor = useFormikContext<any>().values.themeColor;
   return (
     <section className={cx(sectionDetailsStyle, className)}>
       <div className={sectionHeader}>
         <div className={cx(sectionDetailsTitleStyle, titleFontStyle)}>
           <Text variant="h3">{title}</Text>
-          <span></span>
+          <span style={{ backgroundImage: themeColor?.gradient }}></span>
         </div>
         {rightContent && (
           <div>{rightContent}</div>
