@@ -22,43 +22,48 @@ interface ColorPickerProps {
 const gradientThemes: ThemeOption[] = [
   {
     name: "OnlineFreeCV Blue",
-    base: "#007BFF",
-    gradient: "linear-gradient(to bottom, #007BFF, #0056b3)",
+    base: "#a147ef",
+    gradient: "linear-gradient(312deg, #ff5cef 5.38%, #5e36f2 113.21%)", // light blue → dark blue
   },
   {
     name: "Sunset",
-    base: "#FF5F6D",
-    gradient: "linear-gradient(to bottom, #FF5F6D, #FFC371)",
+    base: "#fe603c",
+    gradient: "linear-gradient(to bottom, #FF7F50, #FF0000 )", // coral → red
   },
   {
     name: "Ocean Blue",
-    base: "#2193b0",
-    gradient: "linear-gradient(to bottom, #2193b0, #6dd5ed)",
+    base: "#00aae8",
+    gradient: "linear-gradient(to bottom, #00d4ff , #0082d1 )", // light aqua → deep blue
   },
   {
     name: "Purple Bliss",
-    base: "#6a11cb",
-    gradient: "linear-gradient(to bottom, #6a11cb, #2575fc)",
+    base: "#bd76ff",
+    gradient: "linear-gradient(to bottom, #bd76ff, #6a0dad)", // lavender → royal purple
   },
   {
     name: "Mint Leaf",
-    base: "#00b09b",
-    gradient: "linear-gradient(to bottom, #00b09b, #96c93d)",
+    base: "#00A884",
+    gradient: "linear-gradient(to bottom, #00E676, #00A884)", // mint → green teal
   },
   {
     name: "Cherry Blossom",
-    base: "#f953c6",
-    gradient: "linear-gradient(to bottom, #f953c6, #b91d73)",
+    base: "#f04b89",
+    gradient: "linear-gradient(to bottom, #FF6FA1, #D20457)", // rose pink → raspberry
   },
   {
     name: "Golden Hour",
-    base: "#f7971e",
-    gradient: "linear-gradient(to bottom, #f7971e, #ffd200)",
+    base: "#feaa02",
+    gradient: "linear-gradient(to bottom, #FFD700, #FF8C00)", // yellow → orange
   },
   {
     name: "Midnight",
-    base: "#232526",
-    gradient: "linear-gradient(to bottom, #232526, #414345)",
+    base: "#2C5364",
+    gradient: "linear-gradient(to bottom, #5c9fbc, #0F2027)", // cool grey → near-black
+  },
+  {
+    name: "Bright Flame",
+    base: "#ff6d05",
+    gradient: "linear-gradient(to bottom, #FFA500, #FF0000)", // light flame → bold flame
   },
 ];
 
