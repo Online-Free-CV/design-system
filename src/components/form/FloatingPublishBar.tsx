@@ -12,11 +12,11 @@ import React from "react";
  */
 
 interface FloatingPublishBarProps {
-  isSubmitting: boolean;  
+  isSubmitting: boolean;
 }
 
 export const FloatingPublishBar = ({isSubmitting}: FloatingPublishBarProps) => {
-  const { dirty } = useFormikContext();
+  const { dirty, values } = useFormikContext();
   const [isVisible, setIsVisible] = React.useState(false);
   const [isExiting, setIsExiting] = React.useState(false);
 
@@ -36,7 +36,7 @@ export const FloatingPublishBar = ({isSubmitting}: FloatingPublishBarProps) => {
   return (
     <div className={`${floatingBar} ${isExiting ? floatingBarExit : ""}`}>
       <Text variant="h2">Online Free CV</Text>
-      <button className={publishButton} type="submit">
+      <button className={publishButton} type="submit" style={{ backgroundImage: (values as any).themeColor?.gradient }}>
         {isSubmitting ? (
           <span style={{ display: "flex" }}>
             <Text variant="body1">Publishing</Text>
