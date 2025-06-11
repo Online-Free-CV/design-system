@@ -1,8 +1,7 @@
-import * as React from "react";
 import cx from "classnames";
-import { sectionHeader, sectionDetailsStyle, sectionDetailsTitleStyle } from "./section.css";
+import * as React from "react";
 import { Text } from "../text";
-import { useFormikContext } from "formik";
+import { sectionDetailsStyle, sectionDetailsTitleStyle, sectionHeader } from "./section.css";
 
 interface SectionProps {
   title?: string;
@@ -10,6 +9,10 @@ interface SectionProps {
   children: React.ReactNode;
   className?: string;
   rightContent?: React.ReactNode;
+  themeColor?: {
+    gradient: string;
+    color: string;
+  };
 }
 
 export const Section: React.FC<SectionProps> = ({
@@ -18,8 +21,8 @@ export const Section: React.FC<SectionProps> = ({
   className,
   titleFontStyle,
   rightContent,
+  themeColor,
 }) => {
-  const themeColor = useFormikContext<any>().values.themeColor;
   return (
     <section className={cx(sectionDetailsStyle, className)}>
       <div className={sectionHeader}>
