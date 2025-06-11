@@ -16,6 +16,10 @@ export type ExperienceSectionProps = {
     sectionTitle?: string;
     itemDisplayDirection?: 'row' | 'column';
     barColor?: string;
+    themeColor?: {
+        gradient: string;
+        base: string;
+    };
     items: ExperienceItem[];
     onEdit?: (index: number) => void;
 };
