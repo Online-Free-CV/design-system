@@ -22,8 +22,10 @@ export const ExperienceSection: React.FC<ExperienceSectionProps> = ({
   sectionTitle,
   itemDisplayDirection = "column",
   items,
+  themeColor,
   onEdit,
 }) => {
+  debugger;
   return (
     <>
       {sectionTitle && <h2 className={sectionTitle}>{sectionTitle}</h2>}
@@ -127,7 +129,7 @@ export const ExperienceSection: React.FC<ExperienceSectionProps> = ({
                 <div className={tags}>
                   {item.tags &&
                     item.tags.map((t, tagIdx) => (
-                      <span key={tagIdx} className={tag}>
+                      <span key={tagIdx} className={tag} style={{ backgroundColor: themeColor?.base, color: 'white' }}>
                         {t}
                       </span>
                     ))}

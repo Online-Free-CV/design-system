@@ -123,6 +123,7 @@ export function EditableSection<T extends EditableItem>({
       {viewOnlyItems.length > 0 && (
         <ExperienceSection
           items={viewOnlyItems as ExperienceItem[]}
+          themeColor={(values as any)?.themeColor}
           itemDisplayDirection={itemDisplayDirection}
           onEdit={(index) => toggleEditModeById(viewOnlyItems[index].id!, true)}
         />
