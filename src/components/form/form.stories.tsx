@@ -186,7 +186,7 @@ export const Default: Story = {
             { key: "description", label: "Description", type: "textarea" },
             { key: "startDate", label: "Start Date", type: "date" },
             { key: "endDate", label: "End Date", type: "date" },
-            { key: "skills", label: "Skills", type: "tags" },
+            { key: "tags", label: "Skills", type: "tags" },
             { key: "logoUrl", label: "Company Logo URL", type: "text" },
           ]}
           defaultItem={{
@@ -197,7 +197,7 @@ export const Default: Story = {
             endDate: "",
             isPresent: true,
             isEdit: true,
-            skills: [],
+            tags: [],
             id: "",
             logoUrl: "",
           }}
