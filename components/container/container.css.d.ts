@@ -1,8 +1,8 @@
 export declare const containerRecipe: import('@vanilla-extract/recipes').RuntimeFn<{
     variant: {
         wrapper: {
-            width: `var(--${string})` | `var(--${string}, ${string})`;
-            height: `var(--${string})` | `var(--${string}, ${string})`;
+            width: `var(--${string})`;
+            height: `var(--${string})`;
         };
         flexWrap: {
             flexWrap: "wrap";
@@ -57,30 +57,30 @@ export declare const containerRecipe: import('@vanilla-extract/recipes').Runtime
     };
     size: {
         full: {
-            width: `var(--${string})` | `var(--${string}, ${string})`;
-            height: `var(--${string})` | `var(--${string}, ${string})`;
+            width: `var(--${string})`;
+            height: `var(--${string})`;
         };
         half: {
-            width: `var(--${string})` | `var(--${string}, ${string})`;
-            height: `var(--${string})` | `var(--${string}, ${string})`;
+            width: `var(--${string})`;
+            height: `var(--${string})`;
         };
         auto: {
-            width: `var(--${string})` | `var(--${string}, ${string})`;
-            height: `var(--${string})` | `var(--${string}, ${string})`;
+            width: `var(--${string})`;
+            height: `var(--${string})`;
         };
     };
     gap: {
         none: {
-            gap: `var(--${string})` | `var(--${string}, ${string})`;
+            gap: `var(--${string})`;
         };
         small: {
-            gap: `var(--${string})` | `var(--${string}, ${string})`;
+            gap: `var(--${string})`;
         };
         medium: {
-            gap: `var(--${string})` | `var(--${string}, ${string})`;
+            gap: `var(--${string})`;
         };
         large: {
-            gap: `var(--${string})` | `var(--${string}, ${string})`;
+            gap: `var(--${string})`;
         };
     };
     reverse: {

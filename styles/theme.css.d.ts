@@ -15,101 +15,101 @@ export declare const radii: StringMap;
 export declare const shadows: StringMap;
 export declare const lightThemeVars: {
     colors: {
-        black: `var(--${string})` | `var(--${string}, ${string})`;
-        white: `var(--${string})` | `var(--${string}, ${string})`;
-        blueGray: `var(--${string})` | `var(--${string}, ${string})`;
-        orange: `var(--${string})` | `var(--${string}, ${string})`;
-        fireEngineRed: `var(--${string})` | `var(--${string}, ${string})`;
-        lightGray: `var(--${string})` | `var(--${string}, ${string})`;
-        primary: `var(--${string})` | `var(--${string}, ${string})`;
-        background: `var(--${string})` | `var(--${string}, ${string})`;
+        black: `var(--${string})`;
+        white: `var(--${string})`;
+        blueGray: `var(--${string})`;
+        orange: `var(--${string})`;
+        fireEngineRed: `var(--${string})`;
+        lightGray: `var(--${string})`;
+        primary: `var(--${string})`;
+        background: `var(--${string})`;
     };
     font: {
-        body: `var(--${string})` | `var(--${string}, ${string})`;
+        body: `var(--${string})`;
     };
     spacing: {
-        [x: string]: `var(--${string})` | `var(--${string}, ${string})`;
+        [x: string]: `var(--${string})`;
     };
     size: {
-        [x: string]: `var(--${string})` | `var(--${string}, ${string})`;
+        [x: string]: `var(--${string})`;
     };
     fontSize: {
-        [x: string]: `var(--${string})` | `var(--${string}, ${string})`;
+        [x: string]: `var(--${string})`;
     };
     fontWeight: {
-        [x: string]: `var(--${string})` | `var(--${string}, ${string})`;
+        [x: string]: `var(--${string})`;
     };
     radii: {
-        [x: string]: `var(--${string})` | `var(--${string}, ${string})`;
+        [x: string]: `var(--${string})`;
     };
     shadows: {
-        [x: string]: `var(--${string})` | `var(--${string}, ${string})`;
+        [x: string]: `var(--${string})`;
     };
 };
 export declare const darkThemeVars: {
     colors: {
-        black: `var(--${string})` | `var(--${string}, ${string})`;
-        white: `var(--${string})` | `var(--${string}, ${string})`;
-        blueGray: `var(--${string})` | `var(--${string}, ${string})`;
-        orange: `var(--${string})` | `var(--${string}, ${string})`;
-        fireEngineRed: `var(--${string})` | `var(--${string}, ${string})`;
-        lightGray: `var(--${string})` | `var(--${string}, ${string})`;
-        primary: `var(--${string})` | `var(--${string}, ${string})`;
-        background: `var(--${string})` | `var(--${string}, ${string})`;
+        black: `var(--${string})`;
+        white: `var(--${string})`;
+        blueGray: `var(--${string})`;
+        orange: `var(--${string})`;
+        fireEngineRed: `var(--${string})`;
+        lightGray: `var(--${string})`;
+        primary: `var(--${string})`;
+        background: `var(--${string})`;
     };
     font: {
-        body: `var(--${string})` | `var(--${string}, ${string})`;
+        body: `var(--${string})`;
     };
     spacing: {
-        [x: string]: `var(--${string})` | `var(--${string}, ${string})`;
+        [x: string]: `var(--${string})`;
     };
     size: {
-        [x: string]: `var(--${string})` | `var(--${string}, ${string})`;
+        [x: string]: `var(--${string})`;
     };
     fontSize: {
-        [x: string]: `var(--${string})` | `var(--${string}, ${string})`;
+        [x: string]: `var(--${string})`;
     };
     fontWeight: {
-        [x: string]: `var(--${string})` | `var(--${string}, ${string})`;
+        [x: string]: `var(--${string})`;
     };
     radii: {
-        [x: string]: `var(--${string})` | `var(--${string}, ${string})`;
+        [x: string]: `var(--${string})`;
     };
     shadows: {
-        [x: string]: `var(--${string})` | `var(--${string}, ${string})`;
+        [x: string]: `var(--${string})`;
     };
 };
 export declare const isLightTheme = true;
 export declare const tokens: {
     colors: {
-        black: `var(--${string})` | `var(--${string}, ${string})`;
-        white: `var(--${string})` | `var(--${string}, ${string})`;
-        blueGray: `var(--${string})` | `var(--${string}, ${string})`;
-        orange: `var(--${string})` | `var(--${string}, ${string})`;
-        fireEngineRed: `var(--${string})` | `var(--${string}, ${string})`;
-        lightGray: `var(--${string})` | `var(--${string}, ${string})`;
-        primary: `var(--${string})` | `var(--${string}, ${string})`;
-        background: `var(--${string})` | `var(--${string}, ${string})`;
+        black: `var(--${string})`;
+        white: `var(--${string})`;
+        blueGray: `var(--${string})`;
+        orange: `var(--${string})`;
+        fireEngineRed: `var(--${string})`;
+        lightGray: `var(--${string})`;
+        primary: `var(--${string})`;
+        background: `var(--${string})`;
     };
     font: {
-        body: `var(--${string})` | `var(--${string}, ${string})`;
+        body: `var(--${string})`;
     };
     spacing: {
-        [x: string]: `var(--${string})` | `var(--${string}, ${string})`;
+        [x: string]: `var(--${string})`;
     };
     size: {
-        [x: string]: `var(--${string})` | `var(--${string}, ${string})`;
+        [x: string]: `var(--${string})`;
     };
     fontSize: {
-        [x: string]: `var(--${string})` | `var(--${string}, ${string})`;
+        [x: string]: `var(--${string})`;
     };
     fontWeight: {
-        [x: string]: `var(--${string})` | `var(--${string}, ${string})`;
+        [x: string]: `var(--${string})`;
     };
     radii: {
-        [x: string]: `var(--${string})` | `var(--${string}, ${string})`;
+        [x: string]: `var(--${string})`;
     };
     shadows: {
-        [x: string]: `var(--${string})` | `var(--${string}, ${string})`;
+        [x: string]: `var(--${string})`;
     };
 };
