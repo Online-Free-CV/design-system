@@ -107,6 +107,7 @@ export function EditableSection<T extends EditableItem>({
   return (
     <Section
       title={sectionTitle}
+      themeColor={(values as any)?.themeColor}
       rightContent={
         <button onClick={handleAdd} className={addButton} style={{backgroundImage: (values as any)?.themeColor?.gradient}}>
           Add
