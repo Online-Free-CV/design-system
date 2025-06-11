@@ -25,10 +25,9 @@ export const experienceItem = style({
   display: 'flex',
   gap: tokens.size.md,
   padding: tokens.size.md,
-  border: '1px solid #e5e7eb',
+  border: '1px solid #f4f5fc',
   borderRadius: '0.75rem',
   backgroundColor: '#fff',
-  boxShadow: '0 1px 2px rgba(0,0,0,0.05)',
 });
 
 export const logo = style({
