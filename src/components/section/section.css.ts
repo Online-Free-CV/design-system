@@ -17,6 +17,7 @@ export const sectionDetailsStyle = style({
   borderRadius: tokens.radii.md,
   padding: `${tokens.spacing.sm} ${tokens.spacing.md}`,
   marginBottom: tokens.spacing.md,
+  border: '2px solid #e9eef8 !important',
 
 });
 
