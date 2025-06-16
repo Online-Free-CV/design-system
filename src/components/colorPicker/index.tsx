@@ -13,6 +13,7 @@ interface ThemeOption {
   name: string;
   base: string;
   gradient: string;
+  blob?: string;
 }
 
 interface ColorPickerProps {
@@ -23,50 +24,58 @@ const gradientThemes: ThemeOption[] = [
   {
     name: "OnlineFreeCV Blue",
     base: "#a147ef",
-    gradient: "linear-gradient(312deg, #ff5cef 5.38%, #5e36f2 113.21%)", // light blue → dark blue
+    gradient: "linear-gradient(312deg, #ff5cef 5.38%, #5e36f2 113.21%)",
+    blob: "rgb(71 26 162)", // soft violet
   },
   {
     name: "Sunset",
     base: "#fe603c",
-    gradient: "linear-gradient(to bottom, #FF7F50, #FF0000 )", // coral → red
+    gradient: "linear-gradient(to bottom, #FF7F50, #FF0000)",
+    blob: "rgb(153 21 4)", // warm coral
   },
   {
     name: "Ocean Blue",
     base: "#00aae8",
-    gradient: "linear-gradient(to bottom, #00d4ff , #0082d1 )", // light aqua → deep blue
+    gradient: "linear-gradient(to bottom, #00d4ff , #0082d1)",
+    blob: "rgb(9 85 142)", // vibrant aqua
   },
   {
     name: "Purple Bliss",
     base: "#bd76ff",
-    gradient: "linear-gradient(to bottom, #bd76ff, #6a0dad)", // lavender → royal purple
+    gradient: "linear-gradient(to bottom, #bd76ff, #6a0dad)",
+    blob: "rgb(69 5 133)", // rich purple
   },
   {
     name: "Mint Leaf",
     base: "#00A884",
-    gradient: "linear-gradient(to bottom, #00E676, #00A884)", // mint → green teal
+    gradient: "linear-gradient(to bottom, #00E676, #00A884)",
+    blob: "rgb(12 105 76)", // deep mint green
   },
   {
     name: "Cherry Blossom",
     base: "#f04b89",
-    gradient: "linear-gradient(to bottom, #FF6FA1, #D20457)", // rose pink → raspberry
+    gradient: "linear-gradient(to bottom, #FF6FA1, #D20457)",
+    blob: "rgb(175, 1, 69)", // rich rose
   },
   {
     name: "Golden Hour",
     base: "#feaa02",
-    gradient: "linear-gradient(to bottom, #FFD700, #FF8C00)", // yellow → orange
+    gradient: "linear-gradient(to bottom, #FFD700, #FF8C00)",
+    blob: "rgb(179 100 0)", // golden orange
   },
   {
     name: "Midnight",
     base: "#2C5364",
-    gradient: "linear-gradient(to bottom, #5c9fbc, #0F2027)", // cool grey → near-black
+    gradient: "linear-gradient(to bottom, #5c9fbc, #0F2027)",
+    blob: "rgb(4 51 72)", // dark steel blue
   },
   {
     name: "Bright Flame",
     base: "#ff6d05",
-    gradient: "linear-gradient(to bottom, #FFA500, #FF0000)", // light flame → bold flame
+    gradient: "linear-gradient(to bottom, #FFA500, #FF0000)",
+    blob: "rgb(127 44 1)", // orange flame
   },
 ];
-
 
 export const ColorPickerDropdown: React.FC<ColorPickerProps> = ({ name }) => {
   const [field, , helpers] = useField<any>(name);
