@@ -27,7 +27,7 @@ export const Section: React.FC<SectionProps> = ({
     <section className={cx(sectionDetailsStyle, className)}>
       <div className={sectionHeader}>
         <div className={cx(sectionDetailsTitleStyle, titleFontStyle)}>
-          <Text variant="h3">{title}</Text>
+          <Text variant="h4">{title}</Text>
           <span style={{ backgroundImage: themeColor?.gradient }}></span>
         </div>
         {rightContent && (

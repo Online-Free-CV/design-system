@@ -1,6 +1,7 @@
-import { floatingBar, floatingBarExit, publishButton, dotAnimation } from "./floating-publish-bar.css";
+import { floatingBar, floatingBarExit, publishButton, dotAnimation, logoStyle } from "./floating-publish-bar.css";
 import { Text } from "@components/text";
 import { useFormikContext } from "formik";
+import { Logo } from "@assets/icons/logo";
 import React from "react";
 
 /**
@@ -35,7 +36,9 @@ export const FloatingPublishBar = ({isSubmitting}: FloatingPublishBarProps) => {
 
   return (
     <div className={`${floatingBar} ${isExiting ? floatingBarExit : ""}`}>
-      <Text variant="h2">Online Free CV</Text>
+      <div className={logoStyle}>
+        <Logo />
+      </div>
       <button className={publishButton} type="submit" style={{ backgroundImage: (values as any).themeColor?.gradient }}>
         {isSubmitting ? (
           <span style={{ display: "flex" }}>

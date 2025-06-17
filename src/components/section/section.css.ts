@@ -15,7 +15,7 @@ export const sectionHeader = style({
 export const sectionDetailsStyle = style({
   backgroundColor: tokens.colors.white,
   borderRadius: tokens.radii.md,
-  padding: `${tokens.spacing.sm} ${tokens.spacing.md}`,
+  padding: tokens.spacing.md,
   marginBottom: tokens.spacing.md,
   border: '2px solid #e9eef8 !important',
 

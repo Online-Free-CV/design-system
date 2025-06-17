@@ -44,7 +44,6 @@ export const floatingBar = style({
   zIndex: 1000,
   animation: `${slideDown} 0.5s cubic-bezier(0.4, 0, 0.2, 1)`,
   padding: 10,
-  marginBottom: "1rem",
   position: "sticky",
   top: 0,
 });
@@ -69,4 +68,14 @@ export const publishButton = style({
 export const dotAnimation = style({
   display: "inline-flex",
   animation: `${blink} 1.5s infinite`,
+});
+
+export const logoStyle = style({
+  width: 40,
+  height: 40,
+  borderRadius: tokens.radii.full,
+  overflow: "hidden",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
 });
