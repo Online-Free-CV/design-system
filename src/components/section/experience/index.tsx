@@ -63,6 +63,7 @@ export const ExperienceSection: React.FC<ExperienceSectionProps> = ({
                     onClick={() => onEdit(idx)}
                     className={editButton}
                     aria-label="Edit"
+                    type="button"
                     title="Edit"
                   >
                     <svg
