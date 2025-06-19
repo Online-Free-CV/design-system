@@ -1,0 +1,18 @@
+import{j as e}from"./jsx-runtime-Yb_4y5hn.js";import{r as c}from"./index-BwDkhjyp.js";/* empty css                             */import"./_commonjsHelpers-BosuxZz1.js";var g="_1g0jjmo0",h="_1g0jjmo1",v="_1g0jjmo2";const o=({open:t,onClose:n,children:l})=>(c.useEffect(()=>(t?document.body.style.overflow="hidden":document.body.style.overflow="auto",()=>{document.body.style.overflow="auto"}),[t]),t?e.jsx("div",{className:g,onClick:n,children:e.jsxs("div",{className:h,onClick:r=>r.stopPropagation(),children:[e.jsx("button",{className:v,onClick:n,children:"✕"}),l]})}):null);try{o.displayName="ResumeDialog",o.__docgenInfo={description:"",displayName:"ResumeDialog",props:{open:{defaultValue:null,description:"",name:"open",required:!0,type:{name:"boolean"}},onClose:{defaultValue:null,description:"",name:"onClose",required:!0,type:{name:"() => void"}}}}}catch{}const s=({primary:t=!1,size:n="medium",backgroundColor:l,label:r,type:m="button",className:p,children:f,...y})=>{const b=t?"storybook-button--primary":"storybook-button--secondary";return e.jsxs("button",{type:m,className:["storybook-button",`storybook-button--${n}`,b,p].join(" "),style:{backgroundColor:l},...y,children:[f,r]})};try{s.displayName="Button",s.__docgenInfo={description:"Primary UI component for user interaction",displayName:"Button",props:{primary:{defaultValue:{value:"false"},description:"Is this the principal call to action on the page?",name:"primary",required:!1,type:{name:"boolean"}},backgroundColor:{defaultValue:null,description:"What background color to use",name:"backgroundColor",required:!1,type:{name:"string"}},size:{defaultValue:{value:"medium"},description:"How large should the button be?",name:"size",required:!1,type:{name:"enum",value:[{value:'"small"'},{value:'"medium"'},{value:'"large"'}]}},label:{defaultValue:null,description:"Button contents",name:"label",required:!0,type:{name:"string"}},onClick:{defaultValue:null,description:"Optional click handler",name:"onClick",required:!1,type:{name:"((e: MouseEvent<HTMLButtonElement, MouseEvent>) => void)"}},disabled:{defaultValue:null,description:"Optional disabled state",name:"disabled",required:!1,type:{name:"boolean"}},type:{defaultValue:{value:"button"},description:"type of button",name:"type",required:!1,type:{name:"enum",value:[{value:'"button"'},{value:'"submit"'},{value:'"reset"'}]}},children:{defaultValue:null,description:"children",name:"children",required:!1,type:{name:"ReactNode"}},className:{defaultValue:null,description:"Optional additional class name",name:"className",required:!1,type:{name:"string"}}}}}catch{}const C={title:"DesignSystem/OnlineFreeCV/ResumeDialog",component:o},a=()=>{const[t,n]=c.useState(!1);return e.jsxs(e.Fragment,{children:[e.jsx(s,{label:"Open Resume",onClick:()=>n(!0)}),e.jsx(o,{open:t,onClose:()=>n(!1),children:e.jsxs("div",{style:{width:"794px",height:"1123px",background:"#eee",padding:"2rem"},children:[e.jsx("h1",{children:"Sample Resume"}),e.jsx("p",{children:"This is an A4-sized mock resume."})]})})]})};var i,u,d;a.parameters={...a.parameters,docs:{...(i=a.parameters)==null?void 0:i.docs,source:{originalSource:`() => {
+  const [open, setOpen] = useState(false);
+  return <>
+      <Button label='Open Resume' onClick={() => setOpen(true)} />
+
+      <ResumeDialog open={open} onClose={() => setOpen(false)}>
+        <div style={{
+        width: '794px',
+        height: '1123px',
+        background: '#eee',
+        padding: '2rem'
+      }}>
+          <h1>Sample Resume</h1>
+          <p>This is an A4-sized mock resume.</p>
+        </div>
+      </ResumeDialog>
+    </>;
+}`,...(d=(u=a.parameters)==null?void 0:u.docs)==null?void 0:d.source}}};const R=["Default"];export{a as Default,R as __namedExportsOrder,C as default};
