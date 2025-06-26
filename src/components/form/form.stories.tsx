@@ -82,7 +82,6 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-
 const FormSections = () => {
   const { values } = useFormikContext<any>();
 
@@ -149,14 +148,14 @@ export const Default: Story = {
       ],
       references: [
         {
-          title: "Junaid Umer",
-          location: "Principle Software Engineer",
-          subtitle: "System Limited",
-          email: "junaid.umer@example.com",
-          phone: "+1234567890",
-          id: "1",
-          website: "https://www.junaidumer.com",
-          logoUrl: "https://www.junaidumer.com/images/side2.jpg",
+          title: "",
+          subtitle: "",
+          location: "",
+          email: "",
+          phone: "",
+          website: "",
+          logoUrl: "",
+          isEdit: true,
         },
       ],
       skills: [
@@ -167,6 +166,24 @@ export const Default: Story = {
         },
       ],
       themeColor: "OnlineFreeCV Blue",
+      languages: [
+        {
+          id: "",
+          title: "",
+          tags: [],
+          sectionName: "simple",
+          isEdit: true,
+        },
+      ],
+      hobbies: [
+        {
+          id: "",
+          title: "",
+          description: "",
+          sectionName: "simple",
+          isEdit: true,
+        },
+      ],
     },
     onSubmit: (values, actions) => {
       alert(`Form submitted: ${JSON.stringify(values)}`);
@@ -175,7 +192,7 @@ export const Default: Story = {
     validationSchema: validationSchema,
     children: (
       <>
-        <FormSections/>
+        <FormSections />
 
         <EditableSection
           sectionTitle="Experience"
@@ -188,6 +205,18 @@ export const Default: Story = {
             { key: "endDate", label: "End Date", type: "date" },
             { key: "tags", label: "Skills", type: "tags" },
             { key: "logoUrl", label: "Company Logo URL", type: "text" },
+            {
+              key: "level",
+              label: "Seniority Level",
+              type: "select",
+              options: [
+                { label: "Intern", value: "intern" },
+                { label: "Junior", value: "junior" },
+                { label: "Mid", value: "mid" },
+                { label: "Senior", value: "senior" },
+                { label: "Lead", value: "lead" },
+              ],
+            },
           ]}
           defaultItem={{
             title: "",
@@ -200,6 +229,7 @@ export const Default: Story = {
             tags: [],
             id: "",
             logoUrl: "",
+            level: "junior",
           }}
         />
         <EditableSection
@@ -270,6 +300,47 @@ export const Default: Story = {
             website: "",
             logoUrl: "",
           }}
+        />
+        <EditableSection
+          sectionTitle="Languages"
+          name="languages"
+          defaultItem={{
+            id: "",
+            title: "",
+            tags: [],
+            sectionName: "simple",
+            isEdit: true,
+          }}
+          fields={[
+            { key: "title", label: "Language", type: "text" },
+            {
+              key: "tags",
+              label: "Proficiency",
+              type: "select",
+              options: [
+                { label: "Basic", value: "Basic" },
+                { label: "Conversational", value: "Conversational" },
+                { label: "Fluent", value: "Fluent" },
+                { label: "Native", value: "Native" },
+              ],
+            },
+          ]}
+        />
+        <EditableSection
+          sectionTitle="Hobbies"
+          itemDisplayDirection="row"
+          name="hobbies"
+          defaultItem={{
+            id: "",
+            title: "",
+            description: "",
+            sectionName: "simple",
+            isEdit: true,
+          }}
+          fields={[
+            { key: "title", label: "Hobby", type: "text" },
+            { key: "description", label: "Details", type: "textarea" },
+          ]}
         />
       </>
     ),
