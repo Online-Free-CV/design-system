@@ -21,6 +21,7 @@ import {
   FormValues,
 } from "./editable.interface";
 import cx from "classnames";
+import { SimpleListSection } from "../experience/SimpleListSection";
 
 function generateUniqueId() {
   return Date.now().toString() + Math.random().toString(36).substring(2);
@@ -38,7 +39,6 @@ export function EditableSection<T extends EditableItem>({
     useFormikContext<FormValues<T>>();
 
   const formikItems = useMemo(() => values[name] || [], [values, name]);
-
 
   const [items, setItems] = useState<T[]>([]);
 
@@ -102,6 +102,17 @@ export function EditableSection<T extends EditableItem>({
     () => items.filter((item) => !item.isEdit),
     [items]
   );
+
+  const simpleItems = useMemo(
+    () => viewOnlyItems.filter((item) => item.sectionName === "simple"),
+    [viewOnlyItems]
+  );
+
+  const experienceItems = useMemo(
+    () => viewOnlyItems.filter((item) => item.sectionName === "experience"),
+    [viewOnlyItems]
+  );
+
   const editItems = useMemo(() => items.filter((item) => item.isEdit), [items]);
 
   return (
@@ -109,7 +120,11 @@ export function EditableSection<T extends EditableItem>({
       title={sectionTitle}
       themeColor={(values as any)?.themeColor}
       rightContent={
-        <button onClick={handleAdd} className={addButton} style={{backgroundImage: (values as any)?.themeColor?.gradient}}>
+        <button
+          onClick={handleAdd}
+          className={addButton}
+          style={{ backgroundImage: (values as any)?.themeColor?.gradient }}
+        >
           Add
         </button>
       }
@@ -120,13 +135,29 @@ export function EditableSection<T extends EditableItem>({
         </button>
       </div> */}
 
-      {viewOnlyItems.length > 0 && (
+      {experienceItems.length > 0 && (
         <ExperienceSection
-          items={viewOnlyItems as ExperienceItem[]}
+          items={experienceItems as ExperienceItem[]}
           themeColor={(values as any)?.themeColor}
           itemDisplayDirection={itemDisplayDirection}
-          onEdit={(index) => toggleEditModeById(viewOnlyItems[index].id!, true)}
+          onEdit={(index) =>
+            toggleEditModeById(experienceItems[index].id!, true)
+          }
         />
+      )}
+
+      {simpleItems.length > 0 && (
+        <SimpleListSection
+          items={simpleItems as ExperienceItem[]}
+          itemDisplayDirection={itemDisplayDirection}
+          themeColor={(values as any)?.themeColor}
+        />
+      )}
+
+      {!editItems.length && viewOnlyItems.length === 0 && (
+        <div style={{ textAlign: "center", color: "#999" }}>
+          No items to display
+        </div>
       )}
 
       {editItems.map((item) => {
@@ -157,7 +188,7 @@ export function EditableSection<T extends EditableItem>({
               )}
             </div>
 
-            {fields.map(({ key, label, type }) => {
+            {fields.map(({ key, label, type, options }) => {
               const value = item[key] as string;
 
               if (key === "startDate") {
@@ -176,7 +207,7 @@ export function EditableSection<T extends EditableItem>({
                         name={`${name}.[${originalIndex}].${key as string}`}
                         checked={item.isPresent || false}
                         style={{
-                          accentColor: (values as any)?.themeColor?.base
+                          accentColor: (values as any)?.themeColor?.base,
                         }}
                         onChange={() => handleTogglePresent(originalIndex)}
                       />
@@ -361,6 +392,40 @@ export function EditableSection<T extends EditableItem>({
                 );
               }
 
+              if (type === "select" && options?.length) {
+                return (
+                  <div
+                    key={String(key)}
+                    className={
+                      getIn(
+                        errors,
+                        `${name}.[${originalIndex}].${key as string}`
+                      )
+                        ? formGroup.error
+                        : ""
+                    }
+                    data-placeholder={"Required"}
+                  >
+                    <label className={fieldLabel}>{label}</label>
+                    <select
+                      name={`${name}.[${originalIndex}].${key as string}`}
+                      className={input}
+                      value={value || ""}
+                      onChange={(e) =>
+                        handleChange(originalIndex, key, [e.target.value])
+                      }
+                    >
+                      <option value="">Select an option</option>
+                      {options.map((opt) => (
+                        <option key={opt.value} value={opt.value}>
+                          {opt.label}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+                );
+              }
+
               return (
                 <div
                   key={String(key)}
@@ -397,7 +462,6 @@ export function EditableSection<T extends EditableItem>({
                       touchedFields[key] = true as FormikTouched<T>[keyof T];
                     }
                   );
-
                   const formikTouched = {
                     [name]: Array(items.length).fill({}) as FormikTouched<T>[],
                   } as FormikTouched<FormValues<T>>;

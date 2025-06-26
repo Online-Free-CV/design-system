@@ -14,3 +14,4 @@ export { SkillsSection } from '@components/skills/skills-section';
 export { SkillBarsGrid } from '@components/skills/skills-bar-grid';
 export { ColorPickerDropdown } from '@components/colorPicker';
 export {ResumeDialog} from '@components/resumeDialog';
+export { SimpleListSection } from '@components/section/experience/SimpleListSection';
