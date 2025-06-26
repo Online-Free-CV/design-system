@@ -1,4 +1,4 @@
-export type FieldType = 'text' | 'textarea' | 'date' | "tags";
+export type FieldType = 'text' | 'textarea' | 'date' | "tags" | "select";
 export interface EditableItem {
     id?: string;
     subtitle?: string;
@@ -15,11 +15,16 @@ export interface EditableItem {
     logoUrl?: string;
     tags?: string[];
     isEdit?: boolean;
+    sectionName?: "experience" | "simple";
 }
 export interface FieldConfig<T> {
     key: keyof T;
     label: string;
     type: FieldType;
+    options?: {
+        label: string;
+        value: string;
+    }[];
 }
 export interface EditableSectionProps<T extends EditableItem> {
     sectionTitle?: string;
