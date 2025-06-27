@@ -91,6 +91,12 @@ export function EditableSection<T extends EditableItem>({
     onSave?.(updated);
   };
 
+  const handleDeleteSimpleItem = (index: number) => {
+    const updated = [...simpleItems];
+    updated.splice(index, 1);
+    syncAndUpdate(updated);
+  };
+
   const toggleEditModeById = (id: string, isEdit: boolean) => {
     const updated = items.map((item) =>
       item.id === id ? { ...item, isEdit } : item
@@ -152,6 +158,7 @@ export function EditableSection<T extends EditableItem>({
           items={simpleItems as ExperienceItem[]}
           itemDisplayDirection={itemDisplayDirection}
           themeColor={(values as any)?.themeColor}
+          onDelete={handleDeleteSimpleItem}
         />
       )}
 

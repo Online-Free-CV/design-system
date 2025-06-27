@@ -25,7 +25,6 @@ export const ExperienceSection: React.FC<ExperienceSectionProps> = ({
   themeColor,
   onEdit,
 }) => {
-  debugger;
   return (
     <>
       {sectionTitle && <h2 className={sectionTitle}>{sectionTitle}</h2>}
