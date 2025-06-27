@@ -109,7 +109,7 @@ export function EditableSection<T extends EditableItem>({
   );
 
   const experienceItems = useMemo(
-    () => viewOnlyItems.filter((item) => item.sectionName === "experience"),
+    () => viewOnlyItems.filter((item) => item.sectionName !== "simple"),
     [viewOnlyItems]
   );
 
@@ -123,6 +123,7 @@ export function EditableSection<T extends EditableItem>({
         <button
           onClick={handleAdd}
           className={addButton}
+          type="button"
           style={{ backgroundImage: (values as any)?.themeColor?.gradient }}
         >
           Add
