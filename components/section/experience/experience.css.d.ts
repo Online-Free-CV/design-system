@@ -23,3 +23,6 @@ export declare const paragraph: string;
 export declare const editButton: string;
 export declare const flexCol: string;
 export declare const flexRow: string;
+export declare const simpleListItem: string;
+export declare const simpleRowListItem: string;
+export declare const blockDeleteIcon: string;

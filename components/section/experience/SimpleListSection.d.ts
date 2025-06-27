@@ -7,6 +7,7 @@ interface SimpleListSectionProps {
         gradient: string;
         base: string;
     };
+    onDelete?: (index: number) => void;
 }
 export declare const SimpleListSection: React.FC<SimpleListSectionProps>;
 export {};
