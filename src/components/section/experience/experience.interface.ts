@@ -1,3 +1,18 @@
+export type ImageLikeProps = {
+  src: string;
+  alt: string;
+  className?: string;
+  style?: React.CSSProperties;
+  width?: number;
+  height?: number;
+  sizes?: string;
+  loading?: "lazy" | "eager";
+  decoding?: "async" | "sync" | "auto";
+  fetchPriority?: "high" | "low" | "auto";
+};
+
+export type ImageLikeComponent = React.ComponentType<ImageLikeProps>;
+
 export type ExperienceItem = {
   title?: string;
   subtitle?: string;
@@ -22,5 +37,6 @@ export type ExperienceSectionProps = {
   base: string;
   };
   items: ExperienceItem[];
+  imageComponent?: ImageLikeComponent;
   onEdit?: (index: number) => void; 
 };
