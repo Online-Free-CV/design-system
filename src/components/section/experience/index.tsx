@@ -16,15 +16,39 @@ import {
   title,
   titleRow,
 } from "./experience.css";
-import { ExperienceSectionProps } from "./experience.interface";
+import { ExperienceSectionProps, ImageLikeProps } from "./experience.interface";
+
+
+const DefaultImg: React.FC<ImageLikeProps> = ({
+  src, alt, className, style,
+  width = 80, height = 80, sizes = "80px",
+  loading = "lazy", decoding = "async", fetchPriority = "auto",
+}) => (
+  <img
+    src={src}
+    alt={alt}
+    className={className}
+    style={style}
+    width={width}
+    height={height}
+    sizes={sizes}
+    loading={loading}
+    decoding={decoding}
+    fetchPriority={fetchPriority}
+  />
+);
 
 export const ExperienceSection: React.FC<ExperienceSectionProps> = ({
   sectionTitle,
   itemDisplayDirection = "column",
   items,
   themeColor,
+  imageComponent: ImageComponent = DefaultImg,
   onEdit,
 }) => {
+  const Img = ImageComponent ?? DefaultImg;
+
+
   return (
     <>
       {sectionTitle && <h2 className={sectionTitle}>{sectionTitle}</h2>}
@@ -33,10 +57,16 @@ export const ExperienceSection: React.FC<ExperienceSectionProps> = ({
         {items.map((item, idx) => (
           <li key={idx} className={experienceItem}>
             {item.logoUrl ? (
-              <img
+              <Img
                 src={item.logoUrl}
                 alt={`${item.title} logo`}
                 className={logo}
+                width={80}
+                height={80}
+                sizes="80px"
+                fetchPriority={idx === 0 ? "high" : "auto"}
+                loading={idx === 0 ? "eager" : "lazy"}
+                decoding="async"
               />
             ) : (
               <div className={logo}>
