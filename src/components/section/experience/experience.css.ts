@@ -77,6 +77,8 @@ export const description = style({
   fontSize: "0.9rem",
   color: "#374151",
   marginTop: tokens.spacing.xs,
+  whiteSpace: "pre-line",
+  wordBreak: "break-word",
 });
 
 export const tags = style({
