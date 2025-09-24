@@ -2,7 +2,7 @@ import * as React from "react";
 import { Formik, Form, FormikConfig, FormikHelpers } from "formik";
 import { FloatingPublishBar } from "@components/form/FloatingPublishBar";
 
-interface WithFormikProps<T> {
+export interface WithFormikProps<T> {
   initialValues: T;
   onSubmit: (values: T, actions: FormikHelpers<T>) => void; 
   validationSchema?: FormikConfig<T>["validationSchema"];

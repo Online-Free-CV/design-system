@@ -1,6 +1,7 @@
+import type React from "react";
 import { withFormik } from "@hoc/withFormik";
 
-interface MyFormValues {
+export interface MyFormValues {
   [key: string]: unknown;
 }
 
